@@ -4,32 +4,32 @@
       "file": "/storage/emulated/0/AndroidIDEProjects/lib-nizhamul-qomaroin/app/src/main/kotlin/com/andihasan7/lib/nizhamul/qomaroin/App.kt",
       "selection": {
         "end": {
-          "column": 6,
-          "index": 11269,
-          "line": 355
+          "column": 0,
+          "index": 0,
+          "line": 0
         },
         "start": {
-          "column": 6,
-          "index": 11269,
-          "line": 355
+          "column": 0,
+          "index": 0,
+          "line": 0
         }
       }
     },
     {
-      "file": "/storage/emulated/0/AndroidIDEProjects/lib-nizhamul-qomaroin/app/src/main/kotlin/com/andihasan7/lib/nizhamul/qomaroin/gerhanabulan/GerhanaBulan.kt",
+      "file": "/storage/emulated/0/AndroidIDEProjects/lib-nizhamul-qomaroin/README.md",
       "selection": {
         "end": {
-          "column": 23,
-          "index": 82,
-          "line": 2
+          "column": 0,
+          "index": 332,
+          "line": 6
         },
         "start": {
-          "column": 23,
-          "index": 82,
-          "line": 2
+          "column": 0,
+          "index": 332,
+          "line": 6
         }
       }
     }
   ],
-  "selectedFile": "/storage/emulated/0/AndroidIDEProjects/lib-nizhamul-qomaroin/app/src/main/kotlin/com/andihasan7/lib/nizhamul/qomaroin/App.kt"
+  "selectedFile": "/storage/emulated/0/AndroidIDEProjects/lib-nizhamul-qomaroin/README.md"
 }
