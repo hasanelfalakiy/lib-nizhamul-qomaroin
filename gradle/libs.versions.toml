@@ -11,3 +11,4 @@ junit-jupiter-engine = { module = "org.junit.jupiter:junit-jupiter-engine", vers
 
 [plugins]
 jvm = { id = "org.jetbrains.kotlin.jvm", version = "1.9.23" }
+

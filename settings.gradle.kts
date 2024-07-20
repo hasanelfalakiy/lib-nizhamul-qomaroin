@@ -12,3 +12,4 @@ plugins {
 
 rootProject.name = "lib-nizhamul-qomaroin"
 include("app")
+
