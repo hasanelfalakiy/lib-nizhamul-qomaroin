@@ -10,6 +10,13 @@ fun Double.round(decimals: Int): Double {
     return round(this * multiplier) / multiplier
 }
 
+// DD.d°
+fun toDoubleDegree(decimal: Double): String {
+	val hasil = decimal.round(1)
+    
+    return "$hasil°"
+}
+
 // HH:MM:SS angka dibulatkan ke detik
 fun toTimeFullRound(decimal: Double): IntArray {
     var time = abs(decimal).toInt()
@@ -123,6 +130,21 @@ fun azimuth(x: Double, y: Double, az: Double): Double {
     } else {
         az
     }
+}
+
+fun azimuthGB(xGB: Double, yGB: Double, azGB: Double): Double {
+	
+	return if (xGB > 0.0 && yGB > 0.0) {
+            azGB
+        } else if (xGB < 0.0 && yGB > 0.0) {
+            azGB + 180
+        } else if (xGB < 0.0 && yGB < 0.0) {
+            azGB + 180
+        } else if (xGB > 0.0 && yGB < 0.0) {
+            azGB + 360
+        } else {
+            azGB
+        }
 }
 
 fun numberSelasa(number: Int): String {
