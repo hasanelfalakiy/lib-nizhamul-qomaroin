@@ -3,12 +3,357 @@
  */
 package com.andihasan7.lib.nizhamul.qomaroin
 
+import com.andihasan7.lib.nizhamul.qomaroin.gerhanabulan.GerhanaBulan
 import com.andihasan7.lib.nizhamul.qomaroin.gerhanamatahari.GerhanaMatahari
 import com.andihasan7.lib.nizhamul.qomaroin.util.round
 
 fun main() {
     
     
+    val gb = GerhanaBulan(
+    	-7.231111111111,
+        106.515555555556,
+        333.0, // elevation 
+        7.0, // timeZone
+        5, // bulan hijri
+        1439, // tahun hijri
+        31, // tgl miladi
+        1, // bulan miladi
+        2018, // tahun miladi
+        14, // T0
+        1, // nau'
+        2458150.1,
+        70.5, // deltaT
+        0.2224, // x0
+        0.5742, // x1
+        -0.3517, // y0
+        -0.1054, // y1
+        1.5741, // l10
+        -0.0003, // l11
+        1.0331, // l20
+        -0.0003, // l21
+        0.4802, // l30
+        -0.0002, // l31
+        0.2764, // sdb0
+        -0.0001, // sdb1
+        206.4090, // m0
+        14.3989, // m1
+        16.9335, // dm0
+        -0.1178, // dm1
+        134.3285, // ra0
+        0.6427, // ra1
+        1.0145000, // hp0
+        -0.0003000 // hp1
+    )
+    
+    val jenisGB = gb.jenisGB
+    val tahunGB = gb.tahunGB
+    val bulanStringGB = gb.bulanStringGB
+    val tanggalGB = gb.tanggalGB
+    val hariStringGB = gb.hariStringGB
+    val pasaranStringGB = gb.pasaranStringGB
+    
+    val awalPenumbraUT = gb.awalPenumbraUTHMS
+    val awalPenumbraLokal = gb.awalPenumbraLokalHMS
+    val awalUmbraUT = gb.awalUmbraUTHMS
+    val awalUmbraLokal = gb.awalUmbraLocalHMS
+    val awalTotalUT = gb.awalTotalUTHMS
+    val awalTotalLokal = gb.awalTotalLocalHMS
+    val puncakUT = gb.puncakGerhanaUTHMS
+    val puncakLokal = gb.puncakGerhanaLocalHMS
+    val akhirTotalUT = gb.akhirTotalUTHMS
+    val akhirTotalLokal = gb.akhirTotalLocalHMS
+    val akhirUmbraUT = gb.akhirUmbraUTHMS
+    val akhirUmbraLokal = gb.akhirUmbraLocalHMS
+    val akhirPenumbraUT = gb.akhirPenumbraUTHMS
+    val akhirPenumbraLokal = gb.akhirPenumbraLocalHMS
+    
+    // alt & az awal penumbra
+    val tinggiHakikiAwalPenumbra = gb.tinggiHakikiAwalPenumbra
+    val tinggiMariAwalPenumbra = gb.tinggiMariAwalPenumbra
+    val azimuthAwalPenumbra = gb.azimuthAwalPenumbraDegree
+    // alt & az awal umbra
+    val tinggiHakikiAwalUmbra = gb.tinggiHakikiAwalUmbra
+    val tinggiMariAwalUmbra = gb.tinggiMariAwalUmbra
+    val azimuthAwalUmbra = gb.azimuthAwalUmbraDegree
+    // alt & az awal total
+    val tinggiHakikiAwalTotal = gb.tinggiHakikiAwalTotal
+    val tinggiMariAwalTotal = gb.tinggiMariAwalTotal
+    val azimuthAwalTotal = gb.azimuthAwalTotalDegree
+    // alt & az puncak gerhana
+    val tinggiHakikiPuncakGerhana = gb.tinggiHakikiPuncakGerhana
+    val tinggiMariPuncakGerhana = gb.tinggiMariPuncakGerhana
+    val azimuthPuncakGerhana = gb.azimuthPuncakGerhanaDegree
+    // alt & az akhir total
+    val tinggiHakikiAkhirTotal = gb.tinggiHakikiAkhirTotal
+    val tinggiMariAkhirTotal = gb.tinggiMariAkhirTotal
+    val azimuthAkhirTotal = gb.azimuthAkhirTotalDegree
+    // alt & az akhir umbra
+    val tinggiHakikiAkhirUmbra = gb.tinggiHakikiAkhirUmbra
+    val tinggiMariAkhirUmbra = gb.tinggiMariAkhirUmbra
+    val azimuthAkhirUmbra = gb.azimuthAkhirUmbraDegree
+    // alt & az akhir penumbra
+    val tinggiHakikiAkhirPenumbra = gb.tinggiHakikiAkhirPenumbra
+    val tinggiMariAkhirPenumbra = gb.tinggiMariAkhirPenumbra
+    val azimuthAkhirPenumbra = gb.azimuthAkhirPenumbraDegree
+    
+    val magPenumb = gb.magPenumbraRound
+    val magUmbra = gb.magUmbraRound
+    
+    val durasiPenumbra = gb.durasiPenumbraHMS
+    val durasiUmbra = gb.durasiUmbraHMS
+    val durasiTotal = gb.durasiTotalHMS
+    
+    val radiusPenumbra = gb.radiusPenumbraRound
+    val radiusUmbra = gb.radiusUmbraRound
+    
+    println(" ")
+    println("Date : $hariStringGB $pasaranStringGB, $tanggalGB $bulanStringGB $tahunGB")
+    println(" ")
+    println("Jenis Gerhana     : $jenisGB")
+    println(" ")
+    println("Awal Penumbra UT  : $awalPenumbraUT")
+    println("Awal Umbra UT     : $awalUmbraUT")
+    println("Awal Total UT     : $awalTotalUT")
+    println("Puncak Gerhana UT : $puncakUT")
+    println("Akhir Total UT    : $akhirTotalUT")
+    println("Akhir Umbra UT    : $akhirUmbraUT")
+    println("Akhir Penumbra UT : $akhirPenumbraUT")
+    println(" ")
+    println("Awal Penumbra WD  : $awalPenumbraLokal")
+    println("Awal Umbra WD     : $awalUmbraLokal")
+    println("Awal Total WD     : $awalTotalLokal")
+    println("Puncak Gerhana WD : $puncakLokal")
+    println("Akhir Total WD    : $akhirTotalLokal")
+    println("Akhir Umbra WD    : $akhirUmbraLokal")
+    println("Akhir Penumbra WD : $akhirPenumbraLokal")
+    println(" ")
+    println("Alt Hakiki Awal Penumbra : $tinggiHakikiAwalPenumbra")
+    println("Alt Mar'i Awal Penumbra  : $tinggiMariAwalPenumbra")
+    println("Azimuth Awal Penumbra    : $azimuthAwalPenumbra")
+    println(" ")
+    println("Alt Hakiki Awal Umbra    : $tinggiHakikiAwalUmbra")
+    println("Alt Mar'i Awal Umbra     : $tinggiMariAwalUmbra")
+    println("Azimuth Awal Umbra       : $azimuthAwalUmbra")
+    println(" ")
+    println("Alt Hakiki Awal Umbra    : $tinggiHakikiAwalTotal")
+    println("Alt Mar'i Awal Umbra     : $tinggiMariAwalTotal")
+    println("Azimuth Awal Total       : $azimuthAwalTotal")
+    println(" ")
+    println("Alt Hakiki Awal Puncak   : $tinggiHakikiPuncakGerhana")
+    println("Alt Mar'i Awal Puncak    : $tinggiMariPuncakGerhana")
+    println("Azimuth Puncak Gerhana   : $azimuthPuncakGerhana")
+    println(" ")
+    println("Alt Hakiki Akhir Total   : $tinggiHakikiAkhirTotal")
+    println("Alt Mar'i Akhir Total    : $tinggiMariAkhirTotal")
+    println("Azimuth Akhir Total      : $azimuthAkhirTotal")
+    println(" ")
+    println("Alt Hakiki Akhir Umbra   : $tinggiHakikiAkhirUmbra")
+    println("Alt Mar'i Akhir Umbra    : $tinggiMariAkhirUmbra")
+    println("Azimuth Akhir Umbra      : $azimuthAkhirUmbra")
+    println(" ")
+    println("Alt Hakiki Akhir Penumbra: $tinggiHakikiAkhirPenumbra")
+    println("Alt Mar'i Akhir Penumbra : $tinggiMariAkhirPenumbra")
+    println("Azimuth Akhir Penumbra   : $azimuthAkhirPenumbra")
+    println(" ")
+    println("Mag Penumbra    : $magPenumb")
+    println("Mag Umbra       : $magUmbra")
+    println("Durasi Penumbra : $durasiPenumbra")
+    println("Durasi Umbra    : $durasiUmbra")
+    println("Durasi Total    : $durasiTotal")
+    println("Radius Penumbra : $radiusPenumbra")
+    println("Radius Umbra    : $radiusUmbra")
+    println(" ")
+    
+    /*
+    val t = gb.t
+    val tg = gb.tgHMS
+    val s = gb.s
+    val x = gb.x
+    val y = gb.y
+    val z = gb.z
+    val k = gb.k
+    
+    val t1 = gb.t1
+    val t2 = gb.t2
+    val t3 = gb.t3
+    
+    val sdb = gb.sdb
+    
+    val tc = gb.tc
+    val dec = gb.dec
+    val h = gb.h
+    val p = gb.p
+    val hh = gb.hh
+    val rf = gb.rf
+    val h_h = gb.h_h
+    val xmax = gb.xMax
+    val ymax = gb.yMax
+    val azmax = gb.azMax
+    val azimuthPuncakGerhana = gb.azimuthPuncakGerhana
+    
+    val tPen1 = gb.tPen1
+    val decPen1 = gb.decPen1
+    val hPen1 = gb.hPen1
+    val pPen1 = gb.pPen1
+    val hhPen1 = gb.hhPen1
+    val rfPen1 = gb.rfPen1
+    val h_hPen1 = gb.h_hPen1
+    val xPenum = gb.xPenum
+    val yPenum = gb.yPenum
+    val azPenum = gb.azPenum
+    val azimuthAwalPenumbra = gb.azimuthAwalPenumbra
+    
+    val tu1 = gb.tu1
+    val decTu1 = gb.decTu1
+    val hu1 = gb.hu1
+    val pu1 = gb.pu1
+    val hhU1 = gb.hhU1
+    val rfU1 = gb.rfU1
+    val h_hU1 = gb.h_hU1
+    val xUmbra = gb.xUmbra
+    val yUmbra = gb.yUmbra
+    val azUmbra = gb.azUmbra
+    val azimuthAwalUmbra = gb.azimuthAwalUmbra
+    
+    
+    val tu2 = gb.tu2
+    val decTu2 = gb.decTu2
+    val hu2 = gb.hu2
+    val pu2 = gb.pu2
+    val hhU2 = gb.hhU2
+    val rfU2 = gb.rfU2
+    val h_hU2 = gb.h_hU2
+    val xU2 = gb.xU2
+    val yU2 = gb.yU2
+    val azU2 = gb.azU2
+    val azimuthAwalTotal = gb.azimuthAwalTotal
+    
+    val tu3 = gb.tu3
+    val decTu3 = gb.decTu3
+    val hu3 = gb.hu3
+    val pu3 = gb.pu3
+    val hhU3 = gb.hhU3
+    val rfU3 = gb.rfU3
+    val h_hU3 = gb.h_hU3
+    val xU3 = gb.xU3
+    val yU3 = gb.yU3
+    val azU3 = gb.azU3
+    val azimuthAkhirTotal = gb.azimuthAkhirTotal
+    
+    val tu4 = gb.tu4
+    val decTu4 = gb.decTu4
+    val hu4 = gb.hu4
+    val pu4 = gb.pu4
+    val hhU4 = gb.hhU4
+    val rfU4 = gb.rfU4
+    val h_hU4 = gb.h_hU4
+    val xU4 = gb.xU4
+    val yU4 = gb.yU4
+    val azU4 = gb.azU4
+    val azimuthAkhirUmbra = gb.azimuthAkhirUmbra
+    
+    val tPen4 = gb.tPen4
+    val decPen4 = gb.decPen4
+    val hPen4 = gb.hPen4
+    val pPen4 = gb.pPen4
+    val hhPen4 = gb.hhPen4
+    val rfPen4 = gb.rfPen4
+    val h_hPen4 = gb.h_hPen4
+    val xPen4 = gb.xPen4
+    val yPen4 = gb.yPen4
+    val azPen4 = gb.azPen4
+    val azimuthAkhirPenumbra = gb.azimuthAkhirPenumbra
+    
+    println("t : $t")
+    println("tg : $tg")
+    println("s : $s")
+    println("x : $x")
+    println("y : $y")
+    println("z : $z")
+    println("k : $k")
+    println("t1 : $t1")
+    println("t2 : $t2")
+    println("t3 : $t3")
+    println("sdb : $sdb")
+    println("")
+    println("tc : $tc")
+    println("dec : $dec")
+    println("h : $h")
+    println("p : $p")
+    println("hh : $hh")
+    println("rf : $rf"))
+    println("h_h : $h_h")
+    println("x : $xmax")
+    println("y : $ymax")
+    println("azmax : $azmax")
+    println("")
+    println("tPen1 : $tPen1")
+    println("decPen1 : $decPen1")
+    println("hPen1 : $hPen1")
+    println("pPen1 : $pPen1")
+    println("hhPen1 : $hhPen1")
+    println("rf p1 : $rfPen1")
+    println("h_hPen1 : $h_hPen1")
+    println("x penum : $xPenum")
+    println("y penum : $yPenum")
+    println("az penum : $azPenum")
+    println(" ")
+    println("tu1 : $tu1")
+    println("decTu1 : $decTu1")
+    println("hu1 : $hu1")
+    println("pu1 : $pu1")
+    println("hhU1 : $hhU1")
+    println("rf u1 : $rfU1")
+    println("h_hU1 : $h_hU1")
+    println("x umbra : $xUmbra")
+    println("y umbra : $yUmbra")
+    println("az umbra : $azUmbra")
+    println("")
+    println("tu2 : $tu2")
+    println("decTu2 : $decTu2")
+    println("hu2 : $hu2")
+    println("pu2 : $pu2")
+    println("hhU2 : $hhU2")
+    println("rf u2 : $rfU2")
+    println("h_hU2 : $h_hU2")
+    println("x awal t: $xU2")
+    println("y awal t : $yU2")
+    println("az awal total : $azU2")
+    println("")
+    println("tu3 : $tu3")
+    println("decTu3 : $decTu3")
+    println("hu3 : $hu3")
+    println("pu3 : $pu3")
+    println("hhU3 : $hhU3")
+    println("rf u3 : $rfU3")
+    println("h_hU3 : $h_hU3")
+    println("x akhir t: $xU3")
+    println("y akhir t : $yU3")
+    println("az akhir total : $azU3")
+    println("")
+    println("tu4 : $tu4")
+    println("decTu4 : $decTu4")
+    println("hu4 : $hu4")
+    println("pu4 : $pu4")
+    println("hhU4 : $hhU4")
+    println("rf u4 : $rfU4")
+    println("h_hU4 : $h_hU4")
+    println("x akhir umbra: $xU4")
+    println("y akhir umbra : $yU4")
+    println("az akhir umbra : $azU4")
+    println("")
+    println("tPen4 : $tPen4")
+    println("decPen4 : $decPen4")
+    println("hPen4 : $hPen4")
+    println("pPen4 : $pPen4")
+    println("hhPen4 : $hhPen4")
+    println("rf p4 : $rfPen4")
+    println("h_hPen4 : $h_hPen4")
+    println("x akhir penum : $xPen4")
+    println("y akhir penum : $yPen4")
+    println("az akhir penum : $azPen4")
+    */
     
     // gerhana matahari nidzomul qomaroin
     val nq =
