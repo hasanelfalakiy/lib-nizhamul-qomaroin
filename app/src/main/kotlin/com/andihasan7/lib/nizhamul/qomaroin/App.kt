@@ -53,19 +53,20 @@ fun main() {
     val puncakGerhanaHMS = nq.puncakGerhanaHMS
     val akhirTotalHMS = nq.akhirTotalHMS
     val akhirGerhanaHMS = nq.akhirGerhanaHMS
-    val alt_u1 = nq.tinggiAwalGerhana.round(1)
-    val alt_u2 = nq.tinggiAwalTotal.round(1)
-    val alt_Max = nq.tinggiPuncak.round(1)
-    val alt_u3 = nq.tinggiAkhirTotal.round(1)
-    val alt_u4 = nq.tinggiAkhirGerhana.round(1)
-    val azU1 = nq.azimuthAwalGerhana.round(1)
-    val azU2 = nq.azimuthAwalTotal.round(1)
-    val azMax = nq.azimuthPuncak.round(1)
-    val azU3 = nq.azimuthAkhirTotal.round(1)
-    val azU4 = nq.azimuthAkhirGerhana.round(1)
-    val totalDurasi = nq.totalDurasiGMHMS
+    val alt_u1 = nq.tinggiAwalGerhanaDegree
+    val alt_u2 = nq.tinggiAwalTotalDegree
+    val alt_Max = nq.tinggiPuncakDegree
+    val alt_u3 = nq.tinggiAkhirTotalDegree
+    val alt_u4 = nq.tinggiAkhirGerhanaDegree
+    val azU1 = nq.azimuthAwalGerhanaDegree
+    val azU2 = nq.azimuthAwalTotalDegree
+    val azMax = nq.azimuthPuncakDegree
+    val azU3 = nq.azimuthAkhirTotalDegree
+    val azU4 = nq.azimuthAkhirGerhanaDegree
+    val totalDurasiGB = nq.totalDurasiGMHMS
     val durasiTotalGB = nq.durasiTotalGMHMS
-    val Mag = nq.Mag
+    // val magni = nq.Mag.round(3)
+    val Mag = nq.magnitude.round(3)
     val Obsk = nq.Obsk
     
     
@@ -78,7 +79,7 @@ fun main() {
     
     println(" ")
     println("Date : $hariString $pasaranString, $tanggal $bulanString $tahun")
-    println("")
+    println(" ")
     println("Jenis Gerhana : $jenisGerhana")
     println(" ")
     println("Awal Gerhana       : $awalGerhanaHMS")
@@ -99,13 +100,14 @@ fun main() {
     println("Azimuth Akhir Total  : $azU3")
     println("Azimuth Akhir Gerhana: $azU4")
     println(" ")
-    println("Magnitude           : $Mag")
-    println("Total Durasi        : $totalDurasi")
-    println("Durasi Total/Cincin : $durasiTotalGB")
-    println("Obskurasi           : $Obsk %")
-    
+    println("Magnitude            : $Mag")
+    //println("Magnitude max eclp : $magni")
+    println("Total Durasi         : $totalDurasiGB")
+    println("Durasi Total/Cincin  : $durasiTotalGB")
+    println("Obskurasi            : $Obsk %")
     
     /*
+    
     val cjd = nq.cjd
     val zh = nq.zh
     val ff = nq.ff

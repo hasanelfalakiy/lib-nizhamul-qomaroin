@@ -10,13 +10,13 @@ import kotlin.math.pow
 import kotlin.math.sin
 import kotlin.math.sqrt
 import kotlin.mod
-import com.andihasan7.lib.nizhamul.qomaroin.util.toDegreeFullRound2
-import com.andihasan7.lib.nizhamul.qomaroin.util.azimuth
 import com.andihasan7.lib.nizhamul.qomaroin.util.toTimeFullRound2
+import com.andihasan7.lib.nizhamul.qomaroin.util.toDegreeFullRound2
+import com.andihasan7.lib.nizhamul.qomaroin.util.toDoubleDegree
+import com.andihasan7.lib.nizhamul.qomaroin.util.azimuth
 import com.andihasan7.lib.nizhamul.qomaroin.util.numberJanuari
 import com.andihasan7.lib.nizhamul.qomaroin.util.numberSelasa
 import com.andihasan7.lib.nizhamul.qomaroin.util.numberPahing
-
 
 
 class GerhanaMatahari(
@@ -411,7 +411,7 @@ class GerhanaMatahari(
     val e = sqrt(N)
     val z = (A * V - U * B) / (e * lL)
     val Tau = (lL / e) * sqrt(1 - (z).pow(2))
-    val Mag = (lL - m) / (lL + qQ)
+    val Mag = (lL - qQ) / (lL + qQ)
     val rR = 2 * m / (lL + qQ)
     val sS = (lL - qQ) / (lL + qQ)
     val y = (sS * sS + rR * rR - 1) / (2 * rR * sS)
@@ -468,6 +468,17 @@ class GerhanaMatahari(
             "Tidak terjadi gerhana"
         }
 
+    // magnitude update rumus Ilmu Falak rumusan syar'i dan astronomi seri 3
+    val magnitude = if (Mag > 0.0 && m < abs(qQ) && qQ < 0.0) {
+    		(lL - qQ) / (lL + qQ)
+        } else if (Mag > 0.0 && m < abs(qQ) && qQ > 0.0) {
+        	(lL - qQ) / (lL + qQ)
+        } else if (Mag > 0.0 && m > abs(qQ)) {
+        	(lL - m) / (lL + qQ)
+        } else {
+        	0.0
+        }
+        
     // bidayah wa nihayah kusuf kulli/halqi
     val w = (A * V - U * B) / (e * qQ)
     val d = abs((qQ / e) * sqrt((1 - (w).pow(2))))
@@ -664,18 +675,23 @@ class GerhanaMatahari(
     // alt u1
     val tinggiAwalGerhana = Math.toDegrees(asin(sin(Math.toRadians(latitude)) * sin(Math.toRadians(dU1)) + cos(Math.toRadians(latitude)) * cos(Math.toRadians(dU1)) * cos(Math.toRadians(hau1))))
     val tinggiAwalGerhanaDMS = toDegreeFullRound2(tinggiAwalGerhana)
+    val tinggiAwalGerhanaDegree = toDoubleDegree(tinggiAwalGerhana)
     // alt u2
     val tinggiAwalTotal = Math.toDegrees(asin(sin(Math.toRadians(latitude)) * sin(Math.toRadians(dU2)) + cos(Math.toRadians(latitude)) * cos(Math.toRadians(dU2)) * cos(Math.toRadians(hau2))))
     val tinggiAwalTotalDMS = toDegreeFullRound2(tinggiAwalTotal)
+    val tinggiAwalTotalDegree = toDoubleDegree(tinggiAwalTotal)
     // alt Max
     val tinggiPuncak = Math.toDegrees(asin(sin(Math.toRadians(latitude)) * sin(Math.toRadians(dMax)) + cos(Math.toRadians(latitude)) * cos(Math.toRadians(dMax)) * cos(Math.toRadians(hauMax))))
     val tinggiPuncakDMS = toDegreeFullRound2(tinggiPuncak)
+    val tinggiPuncakDegree = toDoubleDegree(tinggiPuncak)
     // alt u3
     val tinggiAkhirTotal = Math.toDegrees(asin(sin(Math.toRadians(latitude)) * sin(Math.toRadians(dU3)) + cos(Math.toRadians(latitude)) * cos(Math.toRadians(dU3)) * cos(Math.toRadians(hau3))))
     val tinggiAkhirTotalDMS = toDegreeFullRound2(tinggiAkhirTotal)
+    val tinggiAkhirTotalDegree = toDoubleDegree(tinggiAkhirTotal)
     // alt u4
     val tinggiAkhirGerhana = Math.toDegrees(asin(sin(Math.toRadians(latitude)) * sin(Math.toRadians(dU4)) + cos(Math.toRadians(latitude)) * cos(Math.toRadians(dU4)) * cos(Math.toRadians(hau4))))
     val tinggiAkhirGerhanaDMS = toDegreeFullRound2(tinggiAkhirGerhana)
+    val tinggiAkhirGerhanaDegree = toDoubleDegree(tinggiAkhirGerhana)
     
     // azimuth u1
     val xU1 = Math.toDegrees(sin(Math.toRadians(dU1)) * cos(Math.toRadians(latitude)) - cos(Math.toRadians(dU1)) * sin(Math.toRadians(latitude)) * cos(Math.toRadians(hau1)))
@@ -684,6 +700,7 @@ class GerhanaMatahari(
     
     val azimuthAwalGerhana = azimuth(xU1, yU1, aU1)
     val azimuthAwalGerhanaDMS = toDegreeFullRound2(azimuthAwalGerhana)
+    val azimuthAwalGerhanaDegree = toDoubleDegree(azimuthAwalGerhana)
     // azimuth u2
     val xU2 = Math.toDegrees(sin(Math.toRadians(dU2)) * cos(Math.toRadians(latitude)) - cos(Math.toRadians(dU2)) * sin(Math.toRadians(latitude)) * cos(Math.toRadians(hau2)))
     val yU2 = Math.toDegrees(-cos(Math.toRadians(dU2)) * sin(Math.toRadians(hau2)))
@@ -691,6 +708,7 @@ class GerhanaMatahari(
     
     val azimuthAwalTotal = azimuth(xU2, yU2, aU2)
     val azimuthAwalTotalDMS = toDegreeFullRound2(azimuthAwalTotal)
+    val azimuthAwalTotalDegree = toDoubleDegree(azimuthAwalTotal)
     // azimuth Max
     val xMax = Math.toDegrees(sin(Math.toRadians(dMax)) * cos(Math.toRadians(latitude)) - cos(Math.toRadians(dMax)) * sin(Math.toRadians(latitude)) * cos(Math.toRadians(hauMax)))
     val yMax = Math.toDegrees(-cos(Math.toRadians(dMax)) * sin(Math.toRadians(hauMax)))
@@ -698,6 +716,7 @@ class GerhanaMatahari(
     
     val azimuthPuncak = azimuth(xMax, yMax, aMax)
     val azimuthPuncakDMS = toDegreeFullRound2(azimuthPuncak)
+    val azimuthPuncakDegree = toDoubleDegree(azimuthPuncak)
     // azimuth u3
     val xU3 = Math.toDegrees(sin(Math.toRadians(dU3)) * cos(Math.toRadians(latitude)) - cos(Math.toRadians(dU3)) * sin(Math.toRadians(latitude)) * cos(Math.toRadians(hau3)))
     val yU3 = Math.toDegrees(-cos(Math.toRadians(dU3)) * sin(Math.toRadians(hau3)))
@@ -705,6 +724,7 @@ class GerhanaMatahari(
     
     val azimuthAkhirTotal = azimuth(xU3, yU3, aU3)
     val azimuthAkhirTotalDMS = toDegreeFullRound2(azimuthAkhirTotal)
+    val azimuthAkhirTotalDegree = toDoubleDegree(azimuthAkhirTotal)
     // azimuth u4
     val xU4 = Math.toDegrees(sin(Math.toRadians(dU4)) * cos(Math.toRadians(latitude)) - cos(Math.toRadians(dU4)) * sin(Math.toRadians(latitude)) * cos(Math.toRadians(hau4)))
     val yU4 = Math.toDegrees(-cos(Math.toRadians(dU4)) * sin(Math.toRadians(hau4)))
@@ -712,6 +732,7 @@ class GerhanaMatahari(
     
     val azimuthAkhirGerhana = azimuth(xU4, yU4, aU4)
     val azimuthAkhirGerhanaDMS = toDegreeFullRound2(azimuthAkhirGerhana)
+    val azimuthAkhirGerhanaDegree = toDoubleDegree(azimuthAkhirGerhana)
     
     // durasi total gerhana (semua fase)
     val totalDurasiGM = akhirGerhana - awalGerhana
