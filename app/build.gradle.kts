@@ -79,5 +79,5 @@ tasks.named<Test>("test") {
 
 tasks.dokkaHtml.configure {
     // custom dokka output directory
-    outputDirectory.set(file("../documentation/html"))
+    outputDirectory.set(file("../docs"))
 }
