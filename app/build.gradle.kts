@@ -81,3 +81,10 @@ tasks.dokkaHtml.configure {
     // custom dokka output directory
     outputDirectory.set(file("../docs"))
 }
+
+tasks.withType(dokkaHtml.getClass()).configureEach {
+	// memisahkan member agar tampil menjadi tab
+	pluginsMapConfiguration.set(
+		["org.jetbrains.dokka.base.DokkaBase": """{ "separateInheritedMembers": true }"""]
+	)
+}
