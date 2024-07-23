@@ -1,0 +1,35 @@
+{
+  "allFiles": [
+    {
+      "file": "/storage/emulated/0/AndroidIDEProjects/lib-nizhamul-qomaroin/settings.gradle.kts",
+      "selection": {
+        "end": {
+          "column": 4,
+          "index": 1303,
+          "line": 33
+        },
+        "start": {
+          "column": 4,
+          "index": 1303,
+          "line": 33
+        }
+      }
+    },
+    {
+      "file": "/storage/emulated/0/AndroidIDEProjects/lib-nizhamul-qomaroin/app/build.gradle.kts",
+      "selection": {
+        "end": {
+          "column": 1,
+          "index": 1497,
+          "line": 42
+        },
+        "start": {
+          "column": 1,
+          "index": 1497,
+          "line": 42
+        }
+      }
+    }
+  ],
+  "selectedFile": "/storage/emulated/0/AndroidIDEProjects/lib-nizhamul-qomaroin/app/build.gradle.kts"
+}
