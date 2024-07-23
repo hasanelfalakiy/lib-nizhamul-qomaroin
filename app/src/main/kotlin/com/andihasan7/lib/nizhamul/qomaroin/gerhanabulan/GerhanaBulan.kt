@@ -40,40 +40,43 @@ import com.andihasan7.lib.nizhamul.qomaroin.util.numberJanuari
 import com.andihasan7.lib.nizhamul.qomaroin.util.azimuthGB
 
 /**
- * class GerhanaBulan input parameter dimasukkan ke constractor class
- * latitude: Double, // lintang tempat
-    longitude: Double, // bujur tempat
-    elevation: Double, // tinggi tempat
-    timeZone: Double, // time zone
-    bulanHijri: Int, // bulan hijriyah
-    tahunHijri: Int, // tahun hijriyah
-    tanggalMiladi: Int, // tanggal masehi
-    bulanMiladi: Int, // bulan masehi
-    tahunMiladi: Int, // tahun masehi
-    t0: Int, // T0
-    tp: Int, // TP t = 1 total, p = 2 partial/sebagian, n = 3 penumbra
-    jd: Double, // JD julian day
-    deltaT: Double, // delta T
-    x0: Double, // x0
-    x1: Double, // x1
-    y0: Double, // y0
-    y1: Double, // y1
-    l10: Double, // L10
-    l11: Double, // L11
-    l20: Double, // L20
-    l21: Double, // L21
-    l30: Double, // L30
-    l31: Double, // L31
-    sdb0: Double, // sdb0
-    sdb1: Double, // sdb1
-    m0: Double, // M0
-    m1: Double, // M1
-    dm0: Double, // dm0
-    dm1: Double, // dm1
-    ra0: Double, // Ra0
-    ra1: Double, // Ra1
-    hp0: Double, // Hp0
-    hp1: Double // Hp1
+ * class GerhanaBulan input dimasukkan ke parameter constractor class
+ *
+ * ```
+ *    latitude: Double, // lintang tempat
+ *    longitude: Double, // bujur tempat
+ *    elevation: Double, // tinggi tempat
+ *    timeZone: Double, // time zone
+ *    bulanHijri: Int, // bulan hijriyah
+ *    tahunHijri: Int, // tahun hijriyah
+ *    tanggalMiladi: Int, // tanggal masehi
+ *    bulanMiladi: Int, // bulan masehi
+ *    tahunMiladi: Int, // tahun masehi
+ *    t0: Int, // T0
+ *    tp: Int, // TP t = 1 total, p = 2 partial/sebagian, n = 3 penumbra
+ *    jd: Double, // JD julian day
+ *    deltaT: Double, // delta T
+ *    x0: Double, // x0
+ *    x1: Double, // x1
+ *    y0: Double, // y0
+ *    y1: Double, // y1
+ *    l10: Double, // L10
+ *    l11: Double, // L11
+ *    l20: Double, // L20
+ *    l21: Double, // L21
+ *    l30: Double, // L30
+ *    l31: Double, // L31
+ *    sdb0: Double, // sdb0
+ *    sdb1: Double, // sdb1
+ *    m0: Double, // M0
+ *    m1: Double, // M1
+ *    dm0: Double, // dm0
+ *    dm1: Double, // dm1
+ *    ra0: Double, // Ra0
+ *    ra1: Double, // Ra1
+ *    hp0: Double, // Hp0
+ *    hp1: Double // Hp1
+ * ```
  */
 class GerhanaBulan(
     latitude: Double,

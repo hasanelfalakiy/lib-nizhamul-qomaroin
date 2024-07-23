@@ -42,41 +42,44 @@ import com.andihasan7.lib.nizhamul.qomaroin.util.numberSelasa
 import com.andihasan7.lib.nizhamul.qomaroin.util.numberPahing
 
 /**
- * class GerhanaMatahri
- * 
- * latitude: Double, // lintang tempat
- * longitude: Double, // bujur tempat
- * elevation: Double, // tinggi tempat 
- * timeZone: Double, // time zone
- * bulanHijri: Int, // bulan hijriyah
- * tahunHijri: Int, // tahun hijriyah
- * tanggalMiladi: Int, // tanggal masehi
- * bulanMiladi: Int, // bulan masehi
- * tahunMiladi: Int, // tahun masehi
- * t0: Int, // TO/TD di tabel kitabnya mulai tahun 1400 hijriyah tertulis TD apakah salah ketik
- * tp: Int, // TP t = 1 total, r = 2 annular/cincin, p = 3 partial/sebagian, rt = 4 hybrid
- * jd: Double, // JD julian day
- * deltaT: Double, // delta T
- * x0: Double, // x0
- * x1: Double, // x1
- * x2: Double, // x2
- * y0: Double, // y0
- * y1: Double, // y1
- * y2: Double, // y2
- * d0: Double, // d0
- * d1: Double, // d1
- * d2: Double, // d2
- * m0: Double, // M0
- * m1: Double, // M1
- * l1_0: Double, // L1
- * l1_1: Double, // L1
- * l1_2: Double, // L1
- * l2_0: Double, // L2
- * l2_1: Double, // L2
- * l2_2: Double, // L2
- * tanF1: Double, // tanf1
- * tanF2: Double // tanf2
- */
+* class GerhanaMatahari input dimasukkan ke parameter constractor class
+* 
+* ```
+*     latitude: Double, // lintang tempat
+*     longitude: Double, // bujur tempat
+*     elevation: Double, // tinggi tempat 
+*     timeZone: Double, // time zone
+*     bulanHijri: Int, // bulan hijriyah
+*     tahunHijri: Int, // tahun hijriyah
+*     tanggalMiladi: Int, // tanggal masehi
+*     bulanMiladi: Int, // bulan masehi
+*     tahunMiladi: Int, // tahun masehi
+*     t0: Int, // TO/TD di tabel kitabnya mulai tahun 1400 hijriyah tertulis TD apakah salah ketik
+*     tp: Int, // TP t = 1 total, r = 2 annular/cincin, p = 3 partial/sebagian, rt = 4 hybrid
+*     jd: Double, // JD julian day
+*     deltaT: Double, // delta T
+*     x0: Double, // x0
+*     x1: Double, // x1
+*     x2: Double, // x2
+*     y0: Double, // y0
+*     y1: Double, // y1
+*     y2: Double, // y2
+*     d0: Double, // d0
+*     d1: Double, // d1
+*     d2: Double, // d2
+*     m0: Double, // M0
+*     m1: Double, // M1
+*     l1_0: Double, // L1
+*     l1_1: Double, // L1
+*     l1_2: Double, // L1
+*     l2_0: Double, // L2
+*     l2_1: Double, // L2
+*     l2_2: Double, // L2
+*     tanF1: Double, // tanf1
+*     tanF2: Double // tanf2
+* ```
+*
+*/
 class GerhanaMatahari(
     latitude: Double,
     longitude: Double,
