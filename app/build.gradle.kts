@@ -96,9 +96,9 @@ tasks.dokkaHtml.configure {
     outputDirectory.set(file("../docs"))
 }
 
-tasks.withType(dokkaHtml.getClass()).configureEach {
-	// memisahkan member agar tampil menjadi tab
-	pluginsMapConfiguration.set(
-		["org.jetbrains.dokka.base.DokkaBase": """{ "separateInheritedMembers": true }"""]
-	)
+tasks.withType<org.jetbrains.dokka.gradle.DokkaTask>().configureEach {
+    // Memisahkan member agar tampil menjadi tab
+    pluginsMapConfiguration.set(
+        mapOf("org.jetbrains.dokka.base.DokkaBase" to """{ "separateInheritedMembers": true }""")
+    )
 }
