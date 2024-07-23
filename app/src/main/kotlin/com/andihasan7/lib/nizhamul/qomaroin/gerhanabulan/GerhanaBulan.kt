@@ -1,4 +1,4 @@
-/*
+/**
  * This file is part of lib-nizhamul-qomaroin.
  *
  * lib-nizhamul-qomaroin is free software: you can redistribute it and/or modify
@@ -41,7 +41,39 @@ import com.andihasan7.lib.nizhamul.qomaroin.util.azimuthGB
 
 /**
  * class GerhanaBulan input parameter dimasukkan ke constractor class
- * 
+ * latitude: Double, // lintang tempat
+    longitude: Double, // bujur tempat
+    elevation: Double, // tinggi tempat
+    timeZone: Double, // time zone
+    bulanHijri: Int, // bulan hijriyah
+    tahunHijri: Int, // tahun hijriyah
+    tanggalMiladi: Int, // tanggal masehi
+    bulanMiladi: Int, // bulan masehi
+    tahunMiladi: Int, // tahun masehi
+    t0: Int, // T0
+    tp: Int, // TP t = 1 total, p = 2 partial/sebagian, n = 3 penumbra
+    jd: Double, // JD julian day
+    deltaT: Double, // delta T
+    x0: Double, // x0
+    x1: Double, // x1
+    y0: Double, // y0
+    y1: Double, // y1
+    l10: Double, // L10
+    l11: Double, // L11
+    l20: Double, // L20
+    l21: Double, // L21
+    l30: Double, // L30
+    l31: Double, // L31
+    sdb0: Double, // sdb0
+    sdb1: Double, // sdb1
+    m0: Double, // M0
+    m1: Double, // M1
+    dm0: Double, // dm0
+    dm1: Double, // dm1
+    ra0: Double, // Ra0
+    ra1: Double, // Ra1
+    hp0: Double, // Hp0
+    hp1: Double // Hp1
  */
 class GerhanaBulan(
     latitude: Double,
@@ -88,7 +120,7 @@ class GerhanaBulan(
 	/**
 	 * jenis/tipe gerhana
 	 */
-    public val jenisGB = when (tp) {
+    public val jenisGB: String = when (tp) {
     	1 -> "Gerhana Bulan Total"
         2 -> "Gerhana Bulan Sebagian"
         3 -> "Gerhana Bulan Penumbra"
@@ -108,177 +140,177 @@ class GerhanaBulan(
 
     val sdb = sdb0 + sdb1 * t
 	/**
-	 * magnitude penumbra tipe Double
+	 * magnitude penumbra
 	 */
-    val magPenumbra = (s - z) / (2 * sdb)
+    val magPenumbra: Double = (s - z) / (2 * sdb)
 	/**
 	 * magnitude penumbra dibulatkan 5 angka dibelakang koma
 	 */
-    public val magPenumbraRound = magPenumbra.round(5)
+    public val magPenumbraRound: Double = magPenumbra.round(5)
 	/**
-	 * magnitude umbra Double
+	 * magnitude umbra
 	 */
-    public val magUmbra = (x - z) / (2 * sdb)
+    public val magUmbra: Double = (x - z) / (2 * sdb)
 	/**
 	 * magnitude umbra dibulatkan 5 angka dibelakang koma
 	 */
-    public val magUmbraRound = magUmbra.round(5)
+    public val magUmbraRound: Double = magUmbra.round(5)
 
     /**
-	 * durasi penumbra Double 
+	 * durasi penumbra
 	 */
-    public val durasiPenumbra = t1 * 2
+    public val durasiPenumbra: Double = t1 * 2
 	/**
-	 * durasi umbra Double
+	 * durasi umbra
 	 */
-    public val durasiUmbra = t2 * 2
+    public val durasiUmbra: Double = t2 * 2
 	/**
-	 * durasi total Double
+	 * durasi total
 	 */
-    public val durasiTotal = t3 * 2
+    public val durasiTotal: Double = t3 * 2
 
     /**
 	 * durasi penumbra HMS
 	 */
-    public val durasiPenumbraHMS = toTimeFullRoundSec(durasiPenumbra)
+    public val durasiPenumbraHMS: String = toTimeFullRoundSec(durasiPenumbra)
 	/**
 	 * durasi umbra HMS
 	 */
-    public val durasiUmbraHMS = toTimeFullRoundSec(durasiUmbra)
+    public val durasiUmbraHMS: String = toTimeFullRoundSec(durasiUmbra)
 	/**
 	 * durasi total HMS
 	 */
-    public val durasiTotalHMS = toTimeFullRoundSec(durasiTotal)
+    public val durasiTotalHMS: String = toTimeFullRoundSec(durasiTotal)
 
     /**
-	 * radius penumbra Double
+	 * radius penumbra
 	 */
-    public val radiusPenumbra = s - sdb
+    public val radiusPenumbra: Double = s - sdb
 	/**
 	 * radius penumbra dibulatkan 5 angka dibelakang koma
 	 */
-    public val radiusPenumbraRound = radiusPenumbra.round(5)
+    public val radiusPenumbraRound: Double = radiusPenumbra.round(5)
 	/**
-	 * radius umbra Double
+	 * radius umbra
 	 */
-    public val radiusUmbra = x - sdb
+    public val radiusUmbra: Double = x - sdb
 	/**
 	 * radius umbra dibulatkan 5 angka dibelakang koma
 	 */
-    public val radiusUmbraRound = radiusUmbra.round(5)
+    public val radiusUmbraRound: Double = radiusUmbra.round(5)
 
     // hisab sa'ah bidayah wa nihayah khusuf
     // awal gerhana penumbra Universal Time (UTC)
     val p1 = (tg - t1).mod(24.0)
 	/**
-	 * jam awal penumbra Universal Time (UT) bertipe Double
+	 * jam awal penumbra Universal Time (UT)
 	 */
-    public val awalPenumbraUT = p1
+    public val awalPenumbraUT: Double = p1
 	/**
 	 * jam awal penumbra UT format HH:MM:SS
 	 */
-    public val awalPenumbraUTHMS = toTimeFullRoundSec(p1)
+    public val awalPenumbraUTHMS: String = toTimeFullRoundSec(p1)
     // awal gerhana penumbra Local Time
 	/**
 	 * jam awal penumbra Local Time (LT/WD) format HH:MM:SS
 	 */
-    public val awalPenumbraLokalHMS = toTimeFullRoundSec(p1 + timeZone)
+    public val awalPenumbraLokalHMS: String = toTimeFullRoundSec(p1 + timeZone)
 
     // awal gerhana umbra Universal Time (UTC)
     val u1 = (tg - t2).mod(24.0)
 	/**
-	 * jam awal umbra UT Double 
+	 * jam awal umbra UT
 	 */
-    public val awalUmbraUT = u1
+    public val awalUmbraUT: Double = u1
 	/**
 	 * jam awal umbra HH:MM:SS
 	 */
-    public val awalUmbraUTHMS = toTimeFullRoundSec(u1)
+    public val awalUmbraUTHMS: String = toTimeFullRoundSec(u1)
 	/**
 	 * jam awal umbra LT/WD HH:MM:SS
 	 */
     // awal umbra Local Time (UTC)
-    public val awalUmbraLocalHMS = toTimeFullRoundSec(u1 + timeZone)
+    public val awalUmbraLocalHMS: String = toTimeFullRoundSec(u1 + timeZone)
 
     // awal gerhana total Universal Time (UTC)
     val u2 = (tg - t3).mod(24.0)
 	/**
-	 * jam awal total UT Double 
+	 * jam awal total UT
 	 */
-    public val awalTotalUT = u2
+    public val awalTotalUT: Double = u2
 	/**
 	 * jam awal total HH:MM:SS
 	 */
-    public val awalTotalUTHMS = toTimeFullRoundSec(u2)
+    public val awalTotalUTHMS: String = toTimeFullRoundSec(u2)
     // awal gerhana total Local Time (UTC)
 	/**
 	 * jam awal total LT/WD HH:MM:SS
 	 */
-    public val awalTotalLocalHMS = toTimeFullRoundSec(u2 + timeZone)
+    public val awalTotalLocalHMS: String = toTimeFullRoundSec(u2 + timeZone)
 
     // puncak gerhana Universal Time (UTC)
     val pu = (tg).mod(24.0)
 	/**
-	 * jam puncak gerhana UT Double 
+	 * jam puncak gerhana UT
 	 */
-    public val puncakGerhanaUT = pu
+    public val puncakGerhanaUT: Double = pu
 	/**
 	 * jam puncak gerhana UT HH:MM:SS
 	 */
-    public val puncakGerhanaUTHMS = toTimeFullRoundSec(pu)
+    public val puncakGerhanaUTHMS: String = toTimeFullRoundSec(pu)
     // puncak gerhana Local Time (UTC)
 	/**
 	 * jam puncak gerhana LT HH:MM:SS
 	 */
-    public val puncakGerhanaLocalHMS = toTimeFullRoundSec(pu + timeZone)
+    public val puncakGerhanaLocalHMS: String = toTimeFullRoundSec(pu + timeZone)
 
     // akhir gerhana total Universal Time (UTC)
     val u3 = (tg + t3).mod(24.0)
 	/**
-	 * jam akhir total UT Double 
+	 * jam akhir total UT
 	 */
-    public val akhirTotalUT = u3
+    public val akhirTotalUT: Double = u3
 	/**
 	 * jam akhir total UT HH:MM:SS
 	 */
-    public val akhirTotalUTHMS = toTimeFullRoundSec(u3)
+    public val akhirTotalUTHMS: String = toTimeFullRoundSec(u3)
     // akhir gerhana total Local Time (UTC)
 	/**
 	 * jam akhir total LT HH:MM:SS
 	 */
-    public val akhirTotalLocalHMS = toTimeFullRoundSec(u3 + timeZone)
+    public val akhirTotalLocalHMS: String = toTimeFullRoundSec(u3 + timeZone)
 
     // akhir gerhana umbra Universal Time (UTC)
     val u4 = (tg + t2).mod(24.0)
 	/**
-	 * jam akhir umbra UT Double 
+	 * jam akhir umbra UT
 	 */
-    public val akhirUmbraUT = u4
+    public val akhirUmbraUT: Double = u4
 	/**
 	 * jam akhir umbra UT HMS
 	 */
-    public val akhirUmbraUTHMS = toTimeFullRoundSec(u4)
+    public val akhirUmbraUTHMS: String = toTimeFullRoundSec(u4)
     // akhir gerhana umbra Local Time (UTC)
 	/**
 	 * jam akhir umbra LT HMS
 	 */
-    public val akhirUmbraLocalHMS = toTimeFullRoundSec(u4 + timeZone)
+    public val akhirUmbraLocalHMS: String = toTimeFullRoundSec(u4 + timeZone)
 
     // akhir gerhana penumbra Universal Time (UTC)
     val p4 = (tg + t1).mod(24.0)
 	/**
-	 * jam akhir penumbra UT Double 
+	 * jam akhir penumbra UT
 	 */
-    public val akhirPenumbraUT = p4
+    public val akhirPenumbraUT: Double = p4
 	/**
 	 * jam akhir penumbra UT HMS
 	 */
-    public val akhirPenumbraUTHMS = toTimeFullRoundSec(p4)
+    public val akhirPenumbraUTHMS: String = toTimeFullRoundSec(p4)
     // akhir gerhana penumbra Local Time (UTC)
 	/**
 	 * jam akhir penumbra LT HMS
 	 */
-    public val akhirPenumbraLocalHMS = toTimeFullRoundSec(p4 + timeZone)
+    public val akhirPenumbraLocalHMS: String = toTimeFullRoundSec(p4 + timeZone)
 
     val dip =
         if (elevation >= 0.0) {
@@ -286,6 +318,9 @@ class GerhanaBulan(
         } else {
             (1.76 / 60) * sqrt(0.0)
         }
+		
+		
+		
     // hisab irtifa' wa samti irtifa' likulli marhalatil khusuf
     // alt & az puncak gerhana
     val tc = (m0 + m1 * t + longitude - 15.041 / 3600 * deltaT).mod(360.0)
@@ -304,13 +339,13 @@ class GerhanaBulan(
     val rf = 0.01695 / tan(Math.toRadians(hh + 10.3 / (hh + 5.12555)))
     val h_h = hh + rf + dip
 	/**
-	 * tinggi hakiki puncak gerhana String
+	 * tinggi hakiki puncak gerhana DD,D°
 	 */
-    val tinggiHakikiPuncakGerhana = toDoubleDegree(h)
+    val tinggiHakikiPuncakGerhana: String = toDoubleDegree(h)
 	/**
-	 * tinggi mar'i puncak gerhana String 
+	 * tinggi mar'i puncak gerhana DD,D°
 	 */
-    val tinggiMariPuncakGerhana = toDoubleDegree(h_h)
+    val tinggiMariPuncakGerhana: String = toDoubleDegree(h_h)
     val xMax =
         Math.toDegrees(
             (sin(Math.toRadians(dec)) * cos(Math.toRadians(latitude)) -
@@ -321,17 +356,17 @@ class GerhanaBulan(
     val yMax = Math.toDegrees(-cos(Math.toRadians(dec)) * sin(Math.toRadians(tc)))
     val azMax = Math.toDegrees(atan(yMax / xMax))
 	/**
-	 * azimuth puncak Double 
+	 * azimuth puncak
 	 */
-    val azimuthPuncakGerhana = azimuthGB(xMax, yMax, azMax)
+    val azimuthPuncakGerhana: Double = azimuthGB(xMax, yMax, azMax)
 	/**
 	 * azimuth puncak DMS
 	 */
-    val azimuthPuncakGerhanaDMS = toDegreeFullRound2(azimuthPuncakGerhana)
+    val azimuthPuncakGerhanaDMS: String = toDegreeFullRound2(azimuthPuncakGerhana)
 	/**
 	 * azimuth puncak DD,D°
 	 */
-    val azimuthPuncakGerhanaDegree = toDoubleDegree(azimuthPuncakGerhana)
+    val azimuthPuncakGerhanaDegree: String = toDoubleDegree(azimuthPuncakGerhana)
     
     // alt & az awal penumbra p1
     val tPen1 = (tc - m1 * t1).mod(360.0)
@@ -349,13 +384,13 @@ class GerhanaBulan(
     val rfPen1 = 0.01695 / tan(Math.toRadians(hhPen1 + 10.3 / (hhPen1 + 5.12555)))
     val h_hPen1 = hhPen1 + rf + dip
 	/**
-	 * tinggi hakiki awal penumbra String 
+	 * tinggi hakiki awal penumbra DD,D°
 	 */
-    val tinggiHakikiAwalPenumbra = toDoubleDegree(hPen1)
+    val tinggiHakikiAwalPenumbra: String = toDoubleDegree(hPen1)
 	/**
-	 * tinggi mar'i awal penumbra String 
+	 * tinggi mar'i awal penumbra DD,D°
 	 */
-    val tinggiMariAwalPenumbra = toDoubleDegree(h_hPen1)
+    val tinggiMariAwalPenumbra: String = toDoubleDegree(h_hPen1)
     val xPenum = Math.toDegrees(
             (sin(Math.toRadians(decPen1)) * cos(Math.toRadians(latitude)) -
                 (cos(Math.toRadians(decPen1)) *
@@ -365,17 +400,17 @@ class GerhanaBulan(
     val yPenum = Math.toDegrees(-cos(Math.toRadians(decPen1)) * sin(Math.toRadians(tPen1)))
     val azPenum = Math.toDegrees(atan(yPenum / xPenum))
 	/**
-	 * azimuth awal penumbra Double
+	 * azimuth awal penumbra
 	 */
-    val azimuthAwalPenumbra = azimuthGB(xPenum, yPenum, azPenum)
+    val azimuthAwalPenumbra: Double = azimuthGB(xPenum, yPenum, azPenum)
 	/**
 	 * azimuth awal penumbra DMS
 	 */
-    val azimuthAwalPenumbraDMS = toDegreeFullRound2(azimuthAwalPenumbra)
+    val azimuthAwalPenumbraDMS: String = toDegreeFullRound2(azimuthAwalPenumbra)
 	/**
 	 * azimuth awal penumbra DD,D°
 	 */
-    val azimuthAwalPenumbraDegree = toDoubleDegree(azimuthAwalPenumbra)
+    val azimuthAwalPenumbraDegree: String = toDoubleDegree(azimuthAwalPenumbra)
     
     // alt & az awal umbra u1
     val tu1 = (tc - m1 * t2).mod(360.0)
@@ -395,13 +430,13 @@ class GerhanaBulan(
     // h"
     val h_hU1 = hhU1 + rf + dip
 	/**
-	 * tinggi hakiki awal umbra String 
+	 * tinggi hakiki awal umbra DD,D°
 	 */
-    val tinggiHakikiAwalUmbra = toDoubleDegree(hU1)
+    val tinggiHakikiAwalUmbra: String = toDoubleDegree(hU1)
 	/**
-	 * tinggi mar'i awal umbra String 
+	 * tinggi mar'i awal umbra DD,D°
 	 */
-    val tinggiMariAwalUmbra = toDoubleDegree(h_hU1)
+    val tinggiMariAwalUmbra: String = toDoubleDegree(h_hU1)
     val xUmbra = Math.toDegrees(
             (sin(Math.toRadians(decTu1)) * cos(Math.toRadians(latitude)) -
                 (cos(Math.toRadians(decTu1)) *
@@ -411,17 +446,17 @@ class GerhanaBulan(
     val yUmbra = Math.toDegrees(-cos(Math.toRadians(decTu1)) * sin(Math.toRadians(tu1)))
     val azUmbra = Math.toDegrees(atan(yUmbra / xUmbra))
 	/**
-	 * azimuth awal umbra Double
+	 * azimuth awal umbra
 	 */
-    val azimuthAwalUmbra = azimuthGB(xUmbra, yUmbra, azUmbra)
+    val azimuthAwalUmbra: Double = azimuthGB(xUmbra, yUmbra, azUmbra)
 	/**
 	 * azimuth awal umbra DMS
 	 */
-    val azimuthAwalUmbraDMS = toDegreeFullRound2(azimuthAwalUmbra)
+    val azimuthAwalUmbraDMS: String = toDegreeFullRound2(azimuthAwalUmbra)
 	/**
 	 * azimuth awal umbra DD,D°
 	 */
-    val azimuthAwalUmbraDegree = toDoubleDegree(azimuthAwalUmbra)
+    val azimuthAwalUmbraDegree: String = toDoubleDegree(azimuthAwalUmbra)
     
     // alt & az awal total u2
     val tu2 = (tc - m1 * t3).mod(360.0)
@@ -441,13 +476,13 @@ class GerhanaBulan(
     // h"
     val h_hU2 = hhU2 + rf + dip
 	/**
-	 * tinggi hakiki awal total String 
+	 * tinggi hakiki awal total DD,D°
 	 */
-    val tinggiHakikiAwalTotal = toDoubleDegree(hU2)
+    val tinggiHakikiAwalTotal: String = toDoubleDegree(hU2)
 	/**
-	 * tinggi mar'i awal total String
+	 * tinggi mar'i awal total DD,D°
 	 */
-    val tinggiMariAwalTotal = toDoubleDegree(h_hU2)
+    val tinggiMariAwalTotal: String = toDoubleDegree(h_hU2)
     val xU2 = Math.toDegrees(
             (sin(Math.toRadians(decTu2)) * cos(Math.toRadians(latitude)) -
                 (cos(Math.toRadians(decTu2)) *
@@ -457,17 +492,17 @@ class GerhanaBulan(
     val yU2 = Math.toDegrees(-cos(Math.toRadians(decTu2)) * sin(Math.toRadians(tu2)))
     val azU2 = Math.toDegrees(atan(yU2 / xU2))
 	/**
-	 * azimuth awal total Double 
+	 * azimuth awal total
 	 */
-    val azimuthAwalTotal = azimuthGB(xU2, yU2, azU2)
+    val azimuthAwalTotal: Double = azimuthGB(xU2, yU2, azU2)
 	/**
 	 * azimuth awal total DMS
 	 */
-    val azimuthAwalTotalDMS = toDegreeFullRound2(azimuthAwalTotal)
+    val azimuthAwalTotalDMS: String = toDegreeFullRound2(azimuthAwalTotal)
 	/**
 	 * azimuth awal total DD,D°
 	 */
-    val azimuthAwalTotalDegree = toDoubleDegree(azimuthAwalTotal)
+    val azimuthAwalTotalDegree: String = toDoubleDegree(azimuthAwalTotal)
     
     // alt & az akhir total u3
     val tu3 = (tc + m1 * t3).mod(360.0)
@@ -487,13 +522,13 @@ class GerhanaBulan(
     // h"
     val h_hU3 = hhU3 + rf + dip
 	/**
-	 * tinggi hakiki akhir total String 
+	 * tinggi hakiki akhir total DD,D°
 	 */
-    val tinggiHakikiAkhirTotal = toDoubleDegree(hU3)
+    val tinggiHakikiAkhirTotal: String = toDoubleDegree(hU3)
 	/**
-	 * tinggi mar'i akhir total String 
+	 * tinggi mar'i akhir total DD,D°
 	 */
-    val tinggiMariAkhirTotal = toDoubleDegree(h_hU3)
+    val tinggiMariAkhirTotal: String = toDoubleDegree(h_hU3)
     val xU3 = Math.toDegrees(
             (sin(Math.toRadians(decTu3)) * cos(Math.toRadians(latitude)) -
                 (cos(Math.toRadians(decTu3)) *
@@ -503,17 +538,17 @@ class GerhanaBulan(
     val yU3 = Math.toDegrees(-cos(Math.toRadians(decTu3)) * sin(Math.toRadians(tu3)))
     val azU3 = Math.toDegrees(atan(yU3 / xU3))
 	/**
-	 * azimuth akhir total Double 
+	 * azimuth akhir total
 	 */
-    val azimuthAkhirTotal = azimuthGB(xU3, yU3, azU3)
+    val azimuthAkhirTotal: Double = azimuthGB(xU3, yU3, azU3)
 	/**
 	 * azimuth akhir total DMS
 	 */
-    val azimuthAkhirTotalDMS = toDegreeFullRound2(azimuthAkhirTotal)
+    val azimuthAkhirTotalDMS: String = toDegreeFullRound2(azimuthAkhirTotal)
 	/**
 	 * azimuth akhir total DD,D°
 	 */
-    val azimuthAkhirTotalDegree = toDoubleDegree(azimuthAkhirTotal)
+    val azimuthAkhirTotalDegree: String = toDoubleDegree(azimuthAkhirTotal)
     
     
     // alt & az akhir umbra u4
@@ -534,13 +569,13 @@ class GerhanaBulan(
     // h"
     val h_hU4 = hhU4 + rf + dip
 	/**
-	 * tinggi hakiki akhir umbra String
+	 * tinggi hakiki akhir umbra DD,D°
 	 */
-    val tinggiHakikiAkhirUmbra = toDoubleDegree(hU4)
+    val tinggiHakikiAkhirUmbra: String = toDoubleDegree(hU4)
 	/**
-	 * tinggi mar'i akhir umbra String 
+	 * tinggi mar'i akhir umbra DD,D°
 	 */
-    val tinggiMariAkhirUmbra = toDoubleDegree(h_hU4)
+    val tinggiMariAkhirUmbra: String = toDoubleDegree(h_hU4)
     val xU4 = Math.toDegrees(
             (sin(Math.toRadians(decTu4)) * cos(Math.toRadians(latitude)) -
                 (cos(Math.toRadians(decTu4)) *
@@ -550,17 +585,17 @@ class GerhanaBulan(
     val yU4 = Math.toDegrees(-cos(Math.toRadians(decTu4)) * sin(Math.toRadians(tu4)))
     val azU4 = Math.toDegrees(atan(yU4 / xU4))
 	/**
-	 * azimuth akhir umbra Double 
+	 * azimuth akhir umbra
 	 */
-    val azimuthAkhirUmbra = azimuthGB(xU4, yU4, azU4)
+    val azimuthAkhirUmbra: Double = azimuthGB(xU4, yU4, azU4)
 	/**
 	 * azimuth akhir umbra DMS
 	 */
-    val azimuthAkhirUmbraDMS = toDegreeFullRound2(azimuthAkhirUmbra)
+    val azimuthAkhirUmbraDMS: String = toDegreeFullRound2(azimuthAkhirUmbra)
 	/**
 	 * azimuth akhir umbra DD,D°
 	 */
-    val azimuthAkhirUmbraDegree = toDoubleDegree(azimuthAkhirUmbra)
+    val azimuthAkhirUmbraDegree: String = toDoubleDegree(azimuthAkhirUmbra)
     
     // alt & az akhir penumbra p4
     val tPen4 = (tc + m1 * t1).mod(360.0)
@@ -580,13 +615,13 @@ class GerhanaBulan(
     // h"
     val h_hPen4 = hhPen4 + rf + dip
 	/**
-	 * tinggi hakiki akhir penumbra String 
+	 * tinggi hakiki akhir penumbra DD,D°
 	 */
-    val tinggiHakikiAkhirPenumbra = toDoubleDegree(hPen4)
+    val tinggiHakikiAkhirPenumbra: String = toDoubleDegree(hPen4)
 	/**
-	 * tinggi mar'i akhir penumbra String 
+	 * tinggi mar'i akhir penumbra DD,D°
 	 */
-    val tinggiMariAkhirPenumbra = toDoubleDegree(h_hPen4)
+    val tinggiMariAkhirPenumbra: String = toDoubleDegree(h_hPen4)
     val xPen4 = Math.toDegrees(
             (sin(Math.toRadians(decPen4)) * cos(Math.toRadians(latitude)) -
                 (cos(Math.toRadians(decPen4)) *
@@ -596,17 +631,17 @@ class GerhanaBulan(
     val yPen4 = Math.toDegrees(-cos(Math.toRadians(decPen4)) * sin(Math.toRadians(tPen4)))
     val azPen4 = Math.toDegrees(atan(yPen4 / xPen4))
 	/**
-	 * azimuth akhir penumbra Double 
+	 * azimuth akhir penumbra
 	 */
-    val azimuthAkhirPenumbra = azimuthGB(xPen4, yPen4, azPen4)
+    val azimuthAkhirPenumbra: Double = azimuthGB(xPen4, yPen4, azPen4)
 	/**
 	 * azimuth akhir penumbra DMS
 	 */
-    val azimuthAkhirPenumbraDMS = toDegreeFullRound2(azimuthAkhirPenumbra)
+    val azimuthAkhirPenumbraDMS: String = toDegreeFullRound2(azimuthAkhirPenumbra)
 	/**
 	 * azimuth akhir penumbra DD,D°
 	 */
-    val azimuthAkhirPenumbraDegree = toDoubleDegree(azimuthAkhirPenumbra)
+    val azimuthAkhirPenumbraDegree: String = toDoubleDegree(azimuthAkhirPenumbra)
     
     // cari hari
     val cjd = jd + timeZone / 24 + 0.5
@@ -625,7 +660,7 @@ class GerhanaBulan(
 	/**
 	 * bulan masehi Int
 	 */
-    val bulanGB = if (Ec < 14) {
+    val bulanGB: Int = if (Ec < 14) {
     	(Ec - 1)
         } else {
         	(Ec - 13)
@@ -633,7 +668,7 @@ class GerhanaBulan(
 	/**
 	 * tahun masehi Int
 	 */	
-    val tahunGB = if (bulanGB > 2) {
+    val tahunGB: Int = if (bulanGB > 2) {
     	cC - 4716
     } else {
     	cC - 4715
@@ -641,26 +676,26 @@ class GerhanaBulan(
 	/**
 	 * bulan masehi String
 	 */
-    val bulanStringGB = numberJanuari(bulanGB)
+    val bulanStringGB: String = numberJanuari(bulanGB)
 	/**
 	 * tanggal masehi Int
 	 */
-    val tanggalGB = (Bc - Dc) - ((30.6001 * Ec)).toInt()
+    val tanggalGB: Int = (Bc - Dc) - ((30.6001 * Ec)).toInt()
 	/**
 	 * hari Int
 	 */
-    val hariGB = (zh).mod(7)
+    val hariGB: Int = (zh).mod(7)
 	/**
 	 * hari String 
 	 */
-    val hariStringGB = numberSelasa(hariGB)
+    val hariStringGB: String = numberSelasa(hariGB)
 	/**
 	 * pasaran Int
 	 */
-    public val pasaranGB = (zh).mod(5)
+    public val pasaranGB: Int = (zh).mod(5)
 	/**
 	 * pasaran String 
 	 * @return String
 	 */
-    public val pasaranStringGB = numberPahing(pasaranGB)
+    public val pasaranStringGB: String = numberPahing(pasaranGB)
 }

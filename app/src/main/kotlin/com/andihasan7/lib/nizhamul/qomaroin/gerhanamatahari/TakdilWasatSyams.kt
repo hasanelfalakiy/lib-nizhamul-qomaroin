@@ -1,4 +1,4 @@
-/*
+/**
  * This file is part of lib-nizhamul-qomaroin.
  *
  * lib-nizhamul-qomaroin is free software: you can redistribute it and/or modify
@@ -30,7 +30,10 @@ import kotlin.math.sin
 import kotlin.math.tan
 
 object TakdilWasatSyams {
-
+    
+	/**
+	 * fungsi koreksi wasat syams
+	 */
     fun takdilWasatSyams(
         T: Double,
         latitude: Double,

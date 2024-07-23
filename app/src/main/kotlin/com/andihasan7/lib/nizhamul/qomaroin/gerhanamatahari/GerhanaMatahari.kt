@@ -1,4 +1,4 @@
-/*
+/**
  * This file is part of lib-nizhamul-qomaroin.
  *
  * lib-nizhamul-qomaroin is free software: you can redistribute it and/or modify
@@ -41,7 +41,42 @@ import com.andihasan7.lib.nizhamul.qomaroin.util.numberJanuari
 import com.andihasan7.lib.nizhamul.qomaroin.util.numberSelasa
 import com.andihasan7.lib.nizhamul.qomaroin.util.numberPahing
 
-
+/**
+ * class GerhanaMatahri
+ * 
+ * latitude: Double, // lintang tempat
+ * longitude: Double, // bujur tempat
+ * elevation: Double, // tinggi tempat 
+ * timeZone: Double, // time zone
+ * bulanHijri: Int, // bulan hijriyah
+ * tahunHijri: Int, // tahun hijriyah
+ * tanggalMiladi: Int, // tanggal masehi
+ * bulanMiladi: Int, // bulan masehi
+ * tahunMiladi: Int, // tahun masehi
+ * t0: Int, // TO/TD di tabel kitabnya mulai tahun 1400 hijriyah tertulis TD apakah salah ketik
+ * tp: Int, // TP t = 1 total, r = 2 annular/cincin, p = 3 partial/sebagian, rt = 4 hybrid
+ * jd: Double, // JD julian day
+ * deltaT: Double, // delta T
+ * x0: Double, // x0
+ * x1: Double, // x1
+ * x2: Double, // x2
+ * y0: Double, // y0
+ * y1: Double, // y1
+ * y2: Double, // y2
+ * d0: Double, // d0
+ * d1: Double, // d1
+ * d2: Double, // d2
+ * m0: Double, // M0
+ * m1: Double, // M1
+ * l1_0: Double, // L1
+ * l1_1: Double, // L1
+ * l1_2: Double, // L1
+ * l2_0: Double, // L2
+ * l2_1: Double, // L2
+ * l2_2: Double, // L2
+ * tanF1: Double, // tanf1
+ * tanF2: Double // tanf2
+ */
 class GerhanaMatahari(
     latitude: Double,
     longitude: Double,
@@ -219,7 +254,13 @@ class GerhanaMatahari(
     // jam puncak gerhana/saah wasat syams
     val t = Tm5 + P5
     val K = (t0 + t + timeZone - deltaT / 3600).mod(24.0)
-    val puncakGerhana = K
+	/**
+	 * jam puncak gerhana LT/WD
+	 */
+    val puncakGerhana: Double = K
+	/**
+	 * jam puncak gerhana HMS LT/WD
+	 */
     val puncakGerhanaHMS = toTimeFullRound2(K)
 
     val U =
@@ -475,9 +516,16 @@ class GerhanaMatahari(
         (sS *
             sS *
             (BB - sin(Math.toRadians(2 * BB)) / 2 + (CC - sin(Math.toRadians(2 * CC)) / 2))) / PI
+	
     val Obsk = (_obsk).toInt() * 100
 
-    // jinsil kusuf/ jenis gerhana
+    /**
+	 * jinsil kusuf/ jenis gerhana
+	 * 
+	 * @property jenisGerhana
+	 * @return String
+	 * 
+	 */
     val jenisGerhana =
         if (Mag < 0.0) {
             "Tidak terjadi gerhana"
@@ -491,8 +539,11 @@ class GerhanaMatahari(
             "Tidak terjadi gerhana"
         }
 
-    // magnitude update rumus Ilmu Falak rumusan syar'i dan astronomi seri 3
-    val magnitude = if (Mag > 0.0 && m < abs(qQ) && qQ < 0.0) {
+    /**
+	 * magnitude update rumus Ilmu Falak rumusan syar'i dan astronomi seri 3
+	 * @property magnitude
+	 */
+    val magnitude: Double = if (Mag > 0.0 && m < abs(qQ) && qQ < 0.0) {
     		(lL - qQ) / (lL + qQ)
         } else if (Mag > 0.0 && m < abs(qQ) && qQ > 0.0) {
         	(lL - qQ) / (lL + qQ)
@@ -505,10 +556,22 @@ class GerhanaMatahari(
     // bidayah wa nihayah kusuf kulli/halqi
     val w = (A * V - U * B) / (e * qQ)
     val d = abs((qQ / e) * sqrt((1 - (w).pow(2))))
-    val awalTotal = K - d
-    val awalTotalHMS = toTimeFullRound2(awalTotal) // awal total/cincin
-    val akhirTotal = K + d
-    val akhirTotalHMS = toTimeFullRound2(akhirTotal) // akhir total/cincin
+	/**
+	 * jam awal total LT Local Time/WD Waktu Daerah
+	 */
+    val awalTotal: Double = K - d
+	/**
+	 * jam awal total HMS LT Local Time
+	 */
+    val awalTotalHMS: String = toTimeFullRound2(awalTotal) // awal total/cincin
+	/**
+	 * jam akhir total LT/WD
+	 */
+    val akhirTotal: Double = K + d
+	/**
+	 * jam akhir total HMS LT/WD
+	 */
+    val akhirTotalHMS: String = toTimeFullRound2(akhirTotal) // akhir total/cincin
 
     val pwAwal = t - Tau
     val pwAkhir = t + Tau
@@ -572,8 +635,14 @@ class GerhanaMatahari(
 	
     // t awal gerhana 
     val t2 = Tn2 + Pf
-    val awalGerhana = t0 + t2 + timeZone - deltaT / 3600
-    val awalGerhanaHMS = toTimeFullRound2(awalGerhana)
+	/**
+	 * jam awal gerhana LT/WD
+	 */
+    val awalGerhana: Double = t0 + t2 + timeZone - deltaT / 3600
+	/**
+	 * jam awal gerhana HMS LT/WD
+	 */
+    val awalGerhanaHMS: String = toTimeFullRound2(awalGerhana)
 
     // takdil awal linihayah kusuf
     val To1 = pwAkhir
@@ -634,8 +703,14 @@ class GerhanaMatahari(
         
     // t akhir gerhana 
     val t3 = To2 + Ph
-    val akhirGerhana = t0 + t3 + timeZone - deltaT / 3600
-    val akhirGerhanaHMS = toTimeFullRound2(akhirGerhana)
+	/**
+	 * jam akhir gerhana LT/WD
+	 */
+    val akhirGerhana: Double = t0 + t3 + timeZone - deltaT / 3600
+	/**
+	 * jam akhir gerhana HMS LT/WD
+	 */
+    val akhirGerhanaHMS: String = toTimeFullRound2(akhirGerhana)
     
     // cari hari
     val cjd = jd + timeZone / 24 + 0.5
@@ -651,22 +726,46 @@ class GerhanaMatahari(
     val cC = (((Bc - 122.1) / 365.25)).toInt()
     val Dc = ((365.25 * cC)).toInt()
     val Ec = (((Bc - Dc) / 30.6001)).toInt()
-    val bulan = if (Ec < 14) {
+	/**
+	 * bulan masehi Int
+	 */
+    val bulan: Int = if (Ec < 14) {
     	(Ec - 1)
         } else {
         	(Ec - 13)
         }
-    val tahun = if (bulan > 2) {
+	/**
+	 * tahun masehi Int
+	 */	
+    val tahun: Int = if (bulan > 2) {
     	cC - 4716
     } else {
     	cC - 4715
     }
-    val bulanString = numberJanuari(bulan)
-    val tanggal = (Bc - Dc) - ((30.6001 * Ec)).toInt()
-    val hari = (zh).mod(7)
-    val hariString = numberSelasa(hari)
-    val pasaran = (zh).mod(5)
-    val pasaranString = numberPahing(pasaran)
+	/**
+	 * bulan masehi output nama
+	 */
+    val bulanString: String = numberJanuari(bulan)
+	/**
+	 * tanggal masehi Int
+	 */
+    val tanggal: Int = (Bc - Dc) - ((30.6001 * Ec)).toInt()
+	/**
+	 * hari Int
+	 */
+    val hari: Int = (zh).mod(7)
+	/**
+	 * hari output nama
+	 */
+    val hariString: String = numberSelasa(hari)
+	/**
+	 * pasaran Int
+	 */
+    val pasaran: Int = (zh).mod(5)
+	/**
+	 * pasaran output nama
+	 */
+    val pasaranString: String = numberPahing(pasaran)
     
     // irtifa' syams wa simtuha
     // data untuk U1 (output, bukan variable sebelumnya)
@@ -696,74 +795,179 @@ class GerhanaMatahari(
     val hau4 = (raU4 + longitude - 0.00417807 * deltaT)
     
     // alt u1
-    val tinggiAwalGerhana = Math.toDegrees(asin(sin(Math.toRadians(latitude)) * sin(Math.toRadians(dU1)) + cos(Math.toRadians(latitude)) * cos(Math.toRadians(dU1)) * cos(Math.toRadians(hau1))))
-    val tinggiAwalGerhanaDMS = toDegreeFullRound2(tinggiAwalGerhana)
-    val tinggiAwalGerhanaDegree = toDoubleDegree(tinggiAwalGerhana)
+	/**
+	 * tinggi awal gerhana
+	 */
+    val tinggiAwalGerhana: Double = Math.toDegrees(asin(sin(Math.toRadians(latitude)) * sin(Math.toRadians(dU1)) + cos(Math.toRadians(latitude)) * cos(Math.toRadians(dU1)) * cos(Math.toRadians(hau1))))
+	/**
+	 * tinggi awal gerhana DMS
+	 */
+    val tinggiAwalGerhanaDMS: String = toDegreeFullRound2(tinggiAwalGerhana)
+	/**
+	 * tinggi awal gerhana DD,D°
+	 */
+    val tinggiAwalGerhanaDegree: String = toDoubleDegree(tinggiAwalGerhana)
     // alt u2
-    val tinggiAwalTotal = Math.toDegrees(asin(sin(Math.toRadians(latitude)) * sin(Math.toRadians(dU2)) + cos(Math.toRadians(latitude)) * cos(Math.toRadians(dU2)) * cos(Math.toRadians(hau2))))
-    val tinggiAwalTotalDMS = toDegreeFullRound2(tinggiAwalTotal)
-    val tinggiAwalTotalDegree = toDoubleDegree(tinggiAwalTotal)
+	/**
+	 * tinggi awal total
+	 */
+    val tinggiAwalTotal: Double = Math.toDegrees(asin(sin(Math.toRadians(latitude)) * sin(Math.toRadians(dU2)) + cos(Math.toRadians(latitude)) * cos(Math.toRadians(dU2)) * cos(Math.toRadians(hau2))))
+    /**
+	 * tinggi awal total DMS
+	 */
+	val tinggiAwalTotalDMS: String = toDegreeFullRound2(tinggiAwalTotal)
+    /**
+	 * tinggi awal total DD,D°
+	 */
+	val tinggiAwalTotalDegree: String = toDoubleDegree(tinggiAwalTotal)
     // alt Max
-    val tinggiPuncak = Math.toDegrees(asin(sin(Math.toRadians(latitude)) * sin(Math.toRadians(dMax)) + cos(Math.toRadians(latitude)) * cos(Math.toRadians(dMax)) * cos(Math.toRadians(hauMax))))
-    val tinggiPuncakDMS = toDegreeFullRound2(tinggiPuncak)
-    val tinggiPuncakDegree = toDoubleDegree(tinggiPuncak)
+	/**
+	 * tinggi puncak
+	 */
+    val tinggiPuncak: Double = Math.toDegrees(asin(sin(Math.toRadians(latitude)) * sin(Math.toRadians(dMax)) + cos(Math.toRadians(latitude)) * cos(Math.toRadians(dMax)) * cos(Math.toRadians(hauMax))))
+    /**
+	 * tinggi puncak DMS
+	 */
+	val tinggiPuncakDMS: String = toDegreeFullRound2(tinggiPuncak)
+    /**
+	 * tinggi puncak DD,D°
+	 */
+	val tinggiPuncakDegree: String = toDoubleDegree(tinggiPuncak)
     // alt u3
-    val tinggiAkhirTotal = Math.toDegrees(asin(sin(Math.toRadians(latitude)) * sin(Math.toRadians(dU3)) + cos(Math.toRadians(latitude)) * cos(Math.toRadians(dU3)) * cos(Math.toRadians(hau3))))
-    val tinggiAkhirTotalDMS = toDegreeFullRound2(tinggiAkhirTotal)
-    val tinggiAkhirTotalDegree = toDoubleDegree(tinggiAkhirTotal)
+	/**
+	 * tinggi akhir total 
+	 */
+    val tinggiAkhirTotal: Double = Math.toDegrees(asin(sin(Math.toRadians(latitude)) * sin(Math.toRadians(dU3)) + cos(Math.toRadians(latitude)) * cos(Math.toRadians(dU3)) * cos(Math.toRadians(hau3))))
+    /**
+	 * tinggi akhir total DMS
+	 */
+	val tinggiAkhirTotalDMS: String = toDegreeFullRound2(tinggiAkhirTotal)
+    /**
+	 * tinggi akhir total DD,D°
+	 */
+	val tinggiAkhirTotalDegree: String = toDoubleDegree(tinggiAkhirTotal)
     // alt u4
-    val tinggiAkhirGerhana = Math.toDegrees(asin(sin(Math.toRadians(latitude)) * sin(Math.toRadians(dU4)) + cos(Math.toRadians(latitude)) * cos(Math.toRadians(dU4)) * cos(Math.toRadians(hau4))))
-    val tinggiAkhirGerhanaDMS = toDegreeFullRound2(tinggiAkhirGerhana)
-    val tinggiAkhirGerhanaDegree = toDoubleDegree(tinggiAkhirGerhana)
+	/**
+	 * tinggi akhir gerhana 
+	 */
+    val tinggiAkhirGerhana: Double = Math.toDegrees(asin(sin(Math.toRadians(latitude)) * sin(Math.toRadians(dU4)) + cos(Math.toRadians(latitude)) * cos(Math.toRadians(dU4)) * cos(Math.toRadians(hau4))))
+    /**
+	 * tinggi akhir gerhana DMS
+	 */
+	val tinggiAkhirGerhanaDMS: String = toDegreeFullRound2(tinggiAkhirGerhana)
+    /**
+	 * tinggi akhir gerhana DD,D°
+	 */
+	val tinggiAkhirGerhanaDegree: String = toDoubleDegree(tinggiAkhirGerhana)
     
     // azimuth u1
     val xU1 = Math.toDegrees(sin(Math.toRadians(dU1)) * cos(Math.toRadians(latitude)) - cos(Math.toRadians(dU1)) * sin(Math.toRadians(latitude)) * cos(Math.toRadians(hau1)))
     val yU1 = Math.toDegrees(-cos(Math.toRadians(dU1)) * sin(Math.toRadians(hau1)))
     val aU1 = Math.toDegrees(atan(yU1 / xU1))
     
-    val azimuthAwalGerhana = azimuth(xU1, yU1, aU1)
-    val azimuthAwalGerhanaDMS = toDegreeFullRound2(azimuthAwalGerhana)
-    val azimuthAwalGerhanaDegree = toDoubleDegree(azimuthAwalGerhana)
+	/**
+	 * azimuth awal gerhana 
+	 */
+    val azimuthAwalGerhana: Double = azimuth(xU1, yU1, aU1)
+    /**
+	 * azimuth awal gerhana DMS
+	 */
+	val azimuthAwalGerhanaDMS: String = toDegreeFullRound2(azimuthAwalGerhana)
+    /**
+	 * azimuth awal gerhana DD,D°
+	 */
+	val azimuthAwalGerhanaDegree: String = toDoubleDegree(azimuthAwalGerhana)
     // azimuth u2
     val xU2 = Math.toDegrees(sin(Math.toRadians(dU2)) * cos(Math.toRadians(latitude)) - cos(Math.toRadians(dU2)) * sin(Math.toRadians(latitude)) * cos(Math.toRadians(hau2)))
     val yU2 = Math.toDegrees(-cos(Math.toRadians(dU2)) * sin(Math.toRadians(hau2)))
     val aU2 = Math.toDegrees(atan(yU2 / xU2))
     
-    val azimuthAwalTotal = azimuth(xU2, yU2, aU2)
-    val azimuthAwalTotalDMS = toDegreeFullRound2(azimuthAwalTotal)
-    val azimuthAwalTotalDegree = toDoubleDegree(azimuthAwalTotal)
+	/**
+	 * azimuth awal total 
+	 */
+    val azimuthAwalTotal: Double = azimuth(xU2, yU2, aU2)
+    /**
+	 * azimuth awal total DMS
+	 */
+	val azimuthAwalTotalDMS: String = toDegreeFullRound2(azimuthAwalTotal)
+    /**
+	 * azimuth awal total DD,D°
+	 */
+	val azimuthAwalTotalDegree: String = toDoubleDegree(azimuthAwalTotal)
     // azimuth Max
     val xMax = Math.toDegrees(sin(Math.toRadians(dMax)) * cos(Math.toRadians(latitude)) - cos(Math.toRadians(dMax)) * sin(Math.toRadians(latitude)) * cos(Math.toRadians(hauMax)))
     val yMax = Math.toDegrees(-cos(Math.toRadians(dMax)) * sin(Math.toRadians(hauMax)))
     val aMax = Math.toDegrees(atan(yMax / xMax))
     
-    val azimuthPuncak = azimuth(xMax, yMax, aMax)
-    val azimuthPuncakDMS = toDegreeFullRound2(azimuthPuncak)
-    val azimuthPuncakDegree = toDoubleDegree(azimuthPuncak)
+	/**
+	 * azimuth puncak 
+	 */
+    val azimuthPuncak: Double = azimuth(xMax, yMax, aMax)
+    /**
+	 * azimuth puncak DMS
+	 */
+	val azimuthPuncakDMS: String = toDegreeFullRound2(azimuthPuncak)
+    /**
+	 * azimuth puncak DD,D°
+	 */
+	val azimuthPuncakDegree: String = toDoubleDegree(azimuthPuncak)
     // azimuth u3
     val xU3 = Math.toDegrees(sin(Math.toRadians(dU3)) * cos(Math.toRadians(latitude)) - cos(Math.toRadians(dU3)) * sin(Math.toRadians(latitude)) * cos(Math.toRadians(hau3)))
     val yU3 = Math.toDegrees(-cos(Math.toRadians(dU3)) * sin(Math.toRadians(hau3)))
     val aU3 = Math.toDegrees(atan(yU3 / xU3))
     
-    val azimuthAkhirTotal = azimuth(xU3, yU3, aU3)
-    val azimuthAkhirTotalDMS = toDegreeFullRound2(azimuthAkhirTotal)
-    val azimuthAkhirTotalDegree = toDoubleDegree(azimuthAkhirTotal)
+	/**
+	 * azimuth akhir total 
+	 */
+    val azimuthAkhirTotal: Double = azimuth(xU3, yU3, aU3)
+    /**
+	 * azimuth akhir total DMS
+	 */
+	val azimuthAkhirTotalDMS: String = toDegreeFullRound2(azimuthAkhirTotal)
+    /**
+	 * azimuth akhir total DD,D°
+	 */
+	val azimuthAkhirTotalDegree: String = toDoubleDegree(azimuthAkhirTotal)
     // azimuth u4
     val xU4 = Math.toDegrees(sin(Math.toRadians(dU4)) * cos(Math.toRadians(latitude)) - cos(Math.toRadians(dU4)) * sin(Math.toRadians(latitude)) * cos(Math.toRadians(hau4)))
     val yU4 = Math.toDegrees(-cos(Math.toRadians(dU4)) * sin(Math.toRadians(hau4)))
     val aU4 = Math.toDegrees(atan(yU4 / xU4))
     
-    val azimuthAkhirGerhana = azimuth(xU4, yU4, aU4)
-    val azimuthAkhirGerhanaDMS = toDegreeFullRound2(azimuthAkhirGerhana)
-    val azimuthAkhirGerhanaDegree = toDoubleDegree(azimuthAkhirGerhana)
+	/**
+	 * azimuth akhir gerhana 
+	 */
+    val azimuthAkhirGerhana: Double = azimuth(xU4, yU4, aU4)
+    /**
+	 * azimuth akhir gerhana DMS
+	 */
+	val azimuthAkhirGerhanaDMS: String = toDegreeFullRound2(azimuthAkhirGerhana)
+    /**
+	 * azimuth akhir gerhana DD,D°
+	 */
+	val azimuthAkhirGerhanaDegree: String = toDoubleDegree(azimuthAkhirGerhana)
     
     // durasi total gerhana (semua fase)
-    val totalDurasiGM = akhirGerhana - awalGerhana
-    val totalDurasiGMHMS = toTimeFullRound2(totalDurasiGM)
+	/**
+	 * total durasi gerhana seluruhnya 
+	 */
+    val totalDurasiGM: Double = akhirGerhana - awalGerhana
+    /**
+	 * total durasi HMS
+	 */
+	val totalDurasiGMHMS: String = toTimeFullRound2(totalDurasiGM)
     // durasi total/cincin
-    val durasiTotalGM = akhirTotal - awalTotal
-    val durasiTotalGMHMS = toTimeFullRound2(durasiTotalGM)
+	/**
+	 * durasi total 
+	 */
+    val durasiTotalGM: Double = akhirTotal - awalTotal
+    /**
+	 * durasi total HMS
+	 */
+	val durasiTotalGMHMS: String = toTimeFullRound2(durasiTotalGM)
     // obskurasi
+	/**
+	 * obskurasi N%
+	 */
     val obskurasi = Obsk
     
     

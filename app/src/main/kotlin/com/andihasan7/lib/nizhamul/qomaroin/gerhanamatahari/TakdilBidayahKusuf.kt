@@ -1,4 +1,4 @@
-/*
+/**
  * This file is part of lib-nizhamul-qomaroin.
  *
  * lib-nizhamul-qomaroin is free software: you can redistribute it and/or modify
@@ -31,7 +31,10 @@ import kotlin.math.tan
 import kotlin.math.sqrt
 
 object TakdilBidayahKusuf {
-
+    
+	/**
+	 * fungsi koreksi bidayah kusuf
+	 */
     fun takdilBidayahKusuf(
         T: Double,
         latitude: Double,
