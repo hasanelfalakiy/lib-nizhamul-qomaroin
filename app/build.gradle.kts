@@ -36,10 +36,24 @@ plugins {
 
     // Apply the application plugin to add support for building a CLI application in Java.
     application
+	
+	// maven publish
+	`maven-publish`
 }
 
 subprojects {
     apply(plugin = "org.jetbrains.dokka")
+}
+
+group = "com.andihasan7.lib-nizhamul-qomaroin"
+version = "0.0.1"
+
+publishing {
+	publications {
+		create<MavenPublication>("Maven") {
+			from(components["java"])
+		}
+	}
 }
 
 repositories {
