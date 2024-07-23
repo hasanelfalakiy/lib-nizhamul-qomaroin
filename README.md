@@ -20,21 +20,25 @@
 <img src="https://img.shields.io/github/license/hasanelfalakiy/lib-nizhamul-qomaroin?color=blue&style=for-the-badge&color=brightgreen" alt="License">
 </p>
 
-# Tentang Kitab Nihzamul Qomaroin
-Kitab ini merupakan karya dari Ust Abu Sabda Bandung, yang membahas cara menghitung Ijtima', posisi Hilal untuk awal bulan Hijriyah, Gerhana Matahari & Bulan. Jika disandingkan dengan hasil hitung NASA selisihnya hanya beberapa detik.
+# Tentang Kitab Nizhamul Qomaroin
+Kitab ini merupakan karya dari [Ust Abu Sabda](https://github.com/abusabda) Bandung, yang membahas cara menghitung Ijtima', posisi Hilal untuk awal bulan Hijriyah, Gerhana Matahari & Bulan. Jika disandingkan dengan hasil hitung NASA selisihnya hanya beberapa detik.
 
 # Dokumentasi penggunaan
 - [Dokumentasi](https://hasanelfalakiy.github.io/lib-nizhamul-qomaroin/docs/index.html)
 
 ## Fitur
 
-- [x] Gerhana Bulan
-- [x] Gerhana Matahari
+- [x] Gerhana Bulan (Elemen bessel diinput manual)
+- [x] Gerhana Matahari (Elemen bessel diinput manual)
 - [ ] Hisab Awal Bulan Hijriyah
+
+## Persyaratan
+
+- Mempunyai kitab Nizhamul Qomaroin, karena data input diperoleh dari tabel harokat kusuf & khusuf (Elemen bessel) yang ada di kitab Nizhamul Qomaroin.
 
 ## Konfigurasi pertama
 
-1. masukkan kode ini ke settings.gradle.kts (root kotlin dsl) di blok ```repositories```
+1. Masukkan kode ini ke settings.gradle.kts (root kotlin dsl) di blok ```repositories```
 ```kotlin.kts
   dependencyResolutionManagement {
     repositories {
@@ -45,14 +49,14 @@ Kitab ini merupakan karya dari Ust Abu Sabda Bandung, yang membahas cara menghit
     }
   }
 ```
-jika menggunakan groovy dsl
+Jika menggunakan groovy dsl
 ```groovy
   repositories {
     ...
     maven { url 'https://jitpack.io' }
   }
 ```
-2. masukkan dependensi ke build.gradle.kts (app/build.gradle.kts kotlin dsl)
+2. Masukkan dependensi ke build.gradle.kts (app/build.gradle.kts kotlin dsl)
 di blok ```dependencies``` 
 
 ```kotlin.kts
