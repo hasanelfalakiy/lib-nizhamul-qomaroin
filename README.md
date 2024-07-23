@@ -25,7 +25,7 @@
 
 <h1>Dokumentasi penggunaan</h1>
 <ul>
-    <li><a href="./app/build/dokka/html/index.html">Dokumentasi</a></li>
+    <li><a href="https://hasanelfalakiy.github.io/lib-nizhamul-qomaroin/">Dokumentasi</a></li>
 </ul>
 
 <h2>Fitur</h2>

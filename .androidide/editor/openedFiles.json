@@ -14,7 +14,22 @@
           "line": 80
         }
       }
+    },
+    {
+      "file": "/storage/emulated/0/AndroidIDEProjects/lib-nizhamul-qomaroin/README.md",
+      "selection": {
+        "end": {
+          "column": 72,
+          "index": 1465,
+          "line": 27
+        },
+        "start": {
+          "column": 72,
+          "index": 1465,
+          "line": 27
+        }
+      }
     }
   ],
-  "selectedFile": "/storage/emulated/0/AndroidIDEProjects/lib-nizhamul-qomaroin/app/build.gradle.kts"
+  "selectedFile": "/storage/emulated/0/AndroidIDEProjects/lib-nizhamul-qomaroin/README.md"
 }
