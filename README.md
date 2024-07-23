@@ -1,15 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Nizhamul Qomaroin</title>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism.min.css" rel="stylesheet"/>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-kotlin.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-groovy.min.js"></script>
-</head>
-<body>
-
 <p align="center">
   <img src="./img/ic_nizham.jpg" alt="app_banner"/>
 </p>
@@ -32,64 +20,57 @@
 <img src="https://img.shields.io/github/license/hasanelfalakiy/lib-nizhamul-qomaroin?color=blue&style=for-the-badge&color=brightgreen" alt="License">
 </p>
 
-<h1>Tentang Kitab Nihzamul Qomaroin</h1>
-<p>Kitab ini merupakan karya dari Ust Abu Sabda Bandung, yang membahas cara menghitung Ijtima', posisi Hilal untuk awal bulan Hijriyah, Gerhana Matahari & Bulan. Jika disandingkan dengan hasil hitung NASA selisihnya hanya beberapa detik.</p>
+# Tentang Kitab Nihzamul Qomaroin
+Kitab ini merupakan karya dari Ust Abu Sabda Bandung, yang membahas cara menghitung Ijtima', posisi Hilal untuk awal bulan Hijriyah, Gerhana Matahari & Bulan. Jika disandingkan dengan hasil hitung NASA selisihnya hanya beberapa detik.
 
-<h1>Dokumentasi penggunaan</h1>
-<ul>
-    <li><a href="https://hasanelfalakiy.github.io/lib-nizhamul-qomaroin/docs/index.html/">Dokumentasi</a></li>
-</ul>
+# Dokumentasi penggunaan
+- [Dokumentasi](https://hasanelfalakiy.github.io/lib-nizhamul-qomaroin/docs/index.html)
 
-<h2>Fitur</h2>
-<ul>
-    <li>[x] Gerhana Bulan</li>
-    <li>[x] Gerhana Matahari</li>
-    <li>[ ] Hisab Awal Bulan Hijriyah</li>
-</ul>
+## Fitur
 
-<h2>Konfigurasi pertama</h2>
-<ol>
-    <li>masukkan kode ini ke settings.gradle.kts (root kotlin dsl) di blok <code>repositories</code>
-        <pre><code class="language-kotlin">
-        dependencyResolutionManagement {
-            repositories {
-                // contoh
-                maven {
-                    url = uri("https://jitpack.io")
-                }
-            }
-        }
-        </code></pre>
-        jika menggunakan groovy dsl
-        <pre><code class="language-groovy">
-        repositories {
-            ...
-            maven { url 'https://jitpack.io' }
-        }
-        </code></pre>
-    </li>
-    <li>masukkan dependensi ke build.gradle.kts (app/build.gradle.kts kotlin dsl) di blok <code>dependencies</code>
-        <pre><code class="language-kotlin">
-        implementation("com.github.hasanelfalakiy:lib-nizhamul-qomaroin:1.0.0")
-        </code></pre>
-        jika menggunakan groovy dsl
-        <pre><code class="language-groovy">
-        implementation 'com.github.hasanelfalakiy:lib-nizhamul-qomaroin:1.0.0'
-        </code></pre>
-    </li>
-</ol>
+- [x] Gerhana Bulan
+- [x] Gerhana Matahari
+- [ ] Hisab Awal Bulan Hijriyah
 
-<h2>Ingin berkontribusi?</h2>
-<blockquote>Jika Anda ingin berkontribusi, silahkan menggarpu (Fork) repositori ini, buat perubahan, kirim Pull request ke repositori ini</blockquote>
+## Konfigurasi pertama
 
-<h2>Kontak Kami</h2>
-<ul>
-    <li><a href="https://t.me/moonelfalakiy">Telegram</a></li>
-    <li><a href="https://t.me/moonlight_studio01/9">Grup diskusi Telegram</a></li>
-</ul>
+1. masukkan kode ini ke settings.gradle.kts (root kotlin dsl) di blok ```repositories```
+```kotlin.kts
+  dependencyResolutionManagement {
+    repositories {
+      // contoh
+      maven {
+        url = uri("https://jitpack.io")
+      }
+    }
+  }
+```
+jika menggunakan groovy dsl
+```groovy
+  repositories {
+    ...
+    maven { url 'https://jitpack.io' }
+  }
+```
+2. masukkan dependensi ke build.gradle.kts (app/build.gradle.kts kotlin dsl)
+di blok ```dependencies``` 
 
-<h2>License</h2>
-<p>This project is released under the <a href="./LICENSE">GPL-3 License</a>.</p>
+```kotlin.kts
+implementation("com.github.hasanelfalakiy:lib-nizhamul-qomaroin:1.0.0")
+```
+jika menggunakan groovy dsl
+```groovy
+implementation 'com.github.hasanelfalakiy:lib-nizhamul-qomaroin:1.0.0'
+```
+## Ingin berkontribusi?
 
-</body>
-</html>
+> Jika Anda ingin berkontribusi, silahkan menggarpu (Fork) repositori ini, buat perubahan, kirim Pull request ke repositori ini
+
+## Kontak Kami
+
+- [Telegram](https://t.me/moonelfalakiy)
+- [Grup diskusi Telegram](https://t.me/moonlight_studio01/9)
+
+## License
+
+This project is released under the [GPL-3 License](./LICENSE).
