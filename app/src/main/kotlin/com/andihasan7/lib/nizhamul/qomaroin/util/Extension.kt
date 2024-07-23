@@ -27,6 +27,10 @@ import kotlin.math.abs
 import kotlin.math.round
 
 // fungsi custom round dibelakang koma
+/**
+ * extension function untuk membulatkan angka dibelakang koma yang bisa dicustom sendiri
+ * input parameter bertipe Int
+ */
 fun Double.round(decimals: Int): Double {
     var multiplier = 1.0
     repeat(decimals) { multiplier *= 10 }
@@ -34,6 +38,11 @@ fun Double.round(decimals: Int): Double {
 }
 
 // DD.d°
+/**
+ * fungsi merubah data Double ke bentuk format Derajat Desimal DD,d°
+ * @param decimal bertile Double
+ * @return hasil bertipe String
+ */
 fun toDoubleDegree(decimal: Double): String {
 	val hasil = decimal.round(1)
     
@@ -41,6 +50,12 @@ fun toDoubleDegree(decimal: Double): String {
 }
 
 // HH:MM:SS angka dibulatkan ke detik
+/**
+ * fungsi merubah data Double ke jam menit detik bertipe Int Array
+ * index 0 : jam, index 1 : menit, index 2 : detik
+ * @paran decimal bertipe Double
+ * @return IntArray
+ */
 fun toTimeFullRound(decimal: Double): IntArray {
     var time = abs(decimal).toInt()
     var minute = ((abs(decimal) - time.toDouble()) * 60).toInt()
@@ -68,6 +83,10 @@ fun toTimeFullRound(decimal: Double): IntArray {
 }
 
 // HH:MM:SS angka dibulatkan ke detik
+/**
+ * fungsi merubah data Doubel ke bentuk format HH:MM:SS detik dibulatkan ke menit, menit dibulatkan ke jam
+ * @param decimal bertipe Double
+ */
 fun toTimeFullRoundSec(decimal: Double): String {
     var time = abs(decimal).toInt().toString()
     var minute = ((abs(decimal) - time.toDouble()) * 60).toInt().toString()
@@ -101,6 +120,10 @@ fun toTimeFullRoundSec(decimal: Double): String {
 }
 
 // HH:MM:SS,ss dibulatkan ke 2 angka di belakang koma
+/**
+ * fungsi merubah data decimal ke bentuk format HH:MM:SS,ss pembulatan 2 angka dibelakang koma, detik dibulatkan ke menit, menit dibulatkan ke jam
+ * @param decimal bertipe Double
+ */
 fun toTimeFullRound2(decimal: Double): String {
     var time = abs(decimal).toInt().toString()
     var minute = ((abs(decimal) - time.toDouble()) * 60).toInt().toString()
@@ -120,6 +143,10 @@ fun toTimeFullRound2(decimal: Double): String {
 }
 
 // DD° MM` SS,ss`` dibulatkan ke 2 angka di belakang koma
+/**
+ * fungsi merubah data desimal ke bentuk format DD° MM' SS,ss" detik dibulatkan ke 2 angka dibelakang koma, detik dibulatkan ke menit, menit dibulatkan ke jam
+ * @param decimal bertipe Double
+ */
 fun toDegreeFullRound2(decimal: Double): String {
     var degree = abs(decimal).toInt().toString()
     var minute = ((abs(decimal) - degree.toDouble()) * 60).toInt().toString()
@@ -169,7 +196,11 @@ fun azimuthGB(xGB: Double, yGB: Double, azGB: Double): Double {
             azGB
         }
 }
-
+/**
+ * fungsi merubah data Int ke nama-nama hari yang dimulai dari selasa
+ * @param number bertipe Int
+ * @return hari bertipe string
+ */
 fun numberSelasa(number: Int): String {
     val hari =
         when (number) {
@@ -184,7 +215,11 @@ fun numberSelasa(number: Int): String {
         }
     return hari
 }
-
+/**
+ * fungsi merubah data Int ke nama-nama pasaran yang dimulai dari pahing
+ * @param number bertipe Int
+ * @return pasaran bertipe String
+ */
 fun numberPahing(number: Int): String {
     val pasaran =
         when (number) {
@@ -197,7 +232,11 @@ fun numberPahing(number: Int): String {
         }
     return pasaran
 }
-
+/**
+ * fungsi merubah data Int ke nama-nama bulan masehi
+ * @param number bertipe integer
+ * @return bulan nama-nama bulan masehi
+ */
 fun numberJanuari(number: Int): String {
     val bulan =
         when (number) {
