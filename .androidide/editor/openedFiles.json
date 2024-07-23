@@ -1,20 +1,20 @@
 {
   "allFiles": [
     {
-      "file": "/storage/emulated/0/AndroidIDEProjects/lib-nizhamul-qomaroin/README.md",
+      "file": "/storage/emulated/0/AndroidIDEProjects/lib-nizhamul-qomaroin/app/build.gradle.kts",
       "selection": {
         "end": {
-          "column": 80,
-          "index": 3051,
-          "line": 79
+          "column": 20,
+          "index": 2388,
+          "line": 80
         },
         "start": {
-          "column": 80,
-          "index": 3051,
-          "line": 79
+          "column": 20,
+          "index": 2388,
+          "line": 80
         }
       }
     }
   ],
-  "selectedFile": "/storage/emulated/0/AndroidIDEProjects/lib-nizhamul-qomaroin/README.md"
+  "selectedFile": "/storage/emulated/0/AndroidIDEProjects/lib-nizhamul-qomaroin/app/build.gradle.kts"
 }

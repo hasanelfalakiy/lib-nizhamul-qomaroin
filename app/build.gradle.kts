@@ -76,3 +76,8 @@ tasks.named<Test>("test") {
     // Use JUnit Platform for unit tests.
     useJUnitPlatform()
 }
+
+tasks.dokkaHtml.configure {
+    // custom dokka output directory
+    outputDirectory.set(file("../documentation/html"))
+}
