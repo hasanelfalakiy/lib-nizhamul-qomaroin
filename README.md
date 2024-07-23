@@ -60,11 +60,11 @@ Jika menggunakan groovy dsl
 di blok ```dependencies``` 
 
 ```kotlin.kts
-implementation("com.github.hasanelfalakiy:lib-nizhamul-qomaroin:1.0.0")
+implementation("com.github.hasanelfalakiy:lib-nizhamul-qomaroin:0.0.1")
 ```
 jika menggunakan groovy dsl
 ```groovy
-implementation 'com.github.hasanelfalakiy:lib-nizhamul-qomaroin:1.0.0'
+implementation 'com.github.hasanelfalakiy:lib-nizhamul-qomaroin:0.0.1'
 ```
 ## Ingin berkontribusi?
 
